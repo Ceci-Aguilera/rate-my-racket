@@ -1,0 +1,20 @@
+.navbar{
+    background-color: #38b6ff !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: #38b6ff;
+background-image: linear-gradient(315deg, #09c6f9 0%, #38b6ff 74%);
+}
+
+.navbar_brand{
+    margin-left: 50px;
+}
+
+.navbar_nav{
+    margin-right: 50px;
+}
+
+.navbar_link{
+    color: white !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+}

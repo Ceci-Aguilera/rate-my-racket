@@ -1,0 +1,56 @@
+.simple_comments_div{
+    margin-top: 50px;
+}
+
+.simple_comments_title{
+    text-align: center;
+}
+
+.simple_comments_card{
+    width: 95%;
+    margin-top: 20px;
+    margin-left: auto !important;
+    margin-right: 50px !important;
+}
+
+.simple_comments_card_header, .simple_comments_card_footer{
+    background-color: white !important;
+}
+
+.simple_comments_card_header_span{
+    font-weight: bold;
+}
+
+.simple_comments_card_footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-weight: bold;
+}
+
+.simple_comments_card_header_avatar{
+    height: 50px;
+    width: 50px;
+    background-color: #38b6ff;
+    border-radius: 100px;
+}
+
+.simple_comments_card_header_title{
+    padding-left: 10px;
+}
+
+.simple_comments_card_header{
+    display: flex;
+    flex-direction: row;
+    line-height: 50px;
+}
+
+.simple_comments_up_votes, .simple_comments_down_votes{
+    display: flex;
+    flex-direction: row;
+    line-height: 25px;
+}
+
+.simple_comments_card_footer_votes_div{
+    padding-left: 10px;
+}
