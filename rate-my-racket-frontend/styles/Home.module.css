@@ -1,3 +1,134 @@
 .index_row{
     width: 100%;
 }
+
+.top_rackets_section_title{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.top_rackets_row{
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 25px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.top_rackets_col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top_rackets_element_div_wrapper{
+    width: 100%;
+    background-color: white;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border: 1px solid #cbcaca;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    transition: width 2s;
+    text-align: center;
+}
+
+.top_rackets_element_div{
+    width: 100%;
+    margin-top: 10px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    position: relative;
+    background-color: white;
+}
+
+.top_racket_img{
+    opacity: 1;
+    transition: opacity 1s !important;
+}
+
+
+.top_rackets_element_div:hover .top_racket_img{
+    opacity: 0.15;
+    transition: opacity 0.5s !important;
+}
+
+.top_racket_rate_p{
+    color: transparent;
+    margin-top: 150px !important;
+    font-size: 1.5rem;
+    transition: color 1.0s !important;
+}
+
+.top_rackets_element_div:hover .top_racket_rate_p{
+    color: #38b6ff;
+    text-decoration: underline 3px #38b6ff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 1s !important;
+}
+
+.top_rackets_element_div:hover{
+    cursor: pointer;
+}
+
+
+
+
+.top_rackets_element_div_gold{
+    height: 420px;
+    max-width: 200px;
+}
+
+.top_rackets_element_div_wrapper_gold{
+    height: 470px;
+    max-width: 350px;
+}
+
+
+.top_rackets_element_div_silver{
+    height: 400px;
+    max-width: 180px;
+}
+
+.top_rackets_element_div_wrapper_silver{
+    margin-top: 10px;
+    height: 450px;
+    max-width: 330px;
+}
+
+.top_rackets_element_div_bronze{
+    height: 380px;
+    max-width: 160px;
+}
+
+.top_rackets_element_div_wrapper_bonze{
+    margin-top: 20px;
+    height: 430px;
+    max-width: 310px;
+}
+
+.top_stars_div{
+    display: flex;
+    flex-flow: row;
+}
+
+.top_stars_div{
+    margin-top: 10px;
+}
+
+.top_rackets_p{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.top_racket_amount_span{
+    color: #38b6ff;
+    margin-left: 5px;
+    font-weight: bold;
+    line-height: 30px;
+}

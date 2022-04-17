@@ -11,6 +11,7 @@
     margin-top: 20px;
     margin-left: auto !important;
     margin-right: 50px !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .simple_comments_card_header, .simple_comments_card_footer{
