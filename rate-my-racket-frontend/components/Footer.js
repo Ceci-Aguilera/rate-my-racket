@@ -1,4 +1,5 @@
 import { Row, Col, Container } from "react-bootstrap";
+import Link from "next/link"
 
 import styles from "../styles/Footer.module.css";
 
@@ -10,18 +11,17 @@ import { useEffect, useState } from "react";
 
 function Footer() {
 
-// const {current_link, setCurrentLinkHelper} = useContextMenu();
 // const {user, login, logout} = useAuth();
-
-//     useEffect(() => {
-//     // console.log(current_link);
-//   }, [current_link])
-
-const {current_link, setCurrentLinkHelper} = useState("Home")
 
 
   return (
-    <footer className="footer">
+    <footer className={styles.footer}>
+      <div className={styles.footer_links_div}>
+        <Link href="/"><a className={styles.footer_link}>Home</a></Link>
+        <Link href="/"><a className={styles.footer_link}>Categories</a></Link>
+        <Link href="/"><a className={styles.footer_link}>Brand</a></Link>
+        <Link href="/"><a className={styles.footer_link}>Rate</a></Link>
+      </div>
     </footer>
   );
 }

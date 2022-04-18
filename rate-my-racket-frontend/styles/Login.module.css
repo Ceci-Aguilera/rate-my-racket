@@ -1,0 +1,97 @@
+.login_div_wrapper{
+    width:100%;
+}
+
+.login_card{
+    background-color: white! important; 
+    width: 90%;
+    max-width: 600px;
+    margin-top: 100px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 100px;
+}
+
+.login_card_header{
+    background-color: #38b6ff! important; 
+    color: white;
+    text-align: center !important;
+}
+
+.login_card_header_title{
+    text-align: center !important;
+}
+
+.login_card_form_group{
+    width: 80%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.login_form_label{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.login_form_control{
+    font-size: 1.1rem;
+}
+
+.login_card_button_div{
+    width: 100%;
+    margin-top: 25px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+}
+
+.login_button{
+    width: 200px;
+    font-size: 1.2rem;
+    background-color: #38b6ff;
+    border-color: #38b6ff;
+}
+
+.login_button:hover,
+.login_button:active,
+.login_button:after,
+.login_button:focus{
+    background-color: #348ec1;
+    border-color: #348ec1;
+}
+
+.login_card_options_div{
+    width: 80%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display:flex;
+    flex-direction: row;
+}
+
+.login_card_create_account_div{
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+.login_card_link{
+    color: #348ec1;
+    padding-left: 10px;
+    outline: none;
+    font-weight: bold;
+}
+
+.login_card_link:hover{
+    color: #38b6ff;
+}
+
+.register_card_button_div{
+    width: 100%;
+    margin-top: 50px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+}

@@ -4,6 +4,7 @@
 
 .top_rackets_section_title{
     margin-top: 50px;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -59,9 +60,10 @@
 
 .top_racket_rate_p{
     color: transparent;
+    text-decoration: underline 3px transparent;
     margin-top: 150px !important;
     font-size: 1.5rem;
-    transition: color 1.0s !important;
+    transition: color 1.0s , text-decoration 1.0s;
 }
 
 .top_rackets_element_div:hover .top_racket_rate_p{
@@ -69,7 +71,7 @@
     text-decoration: underline 3px #38b6ff;
     font-size: 1.5rem;
     font-weight: bold;
-    transition: color 1s !important;
+    transition: color 1.0s , text-decoration 1.0s;
 }
 
 .top_rackets_element_div:hover{

@@ -10,6 +10,7 @@ import top_racket_gold from "../public/images/top_racket_gold.png"
 import top_racket_silver from "../public/images/top_racket_silver.png"
 import top_racket_bronze from "../public/images/top_racket_bronze.png"
 
+
 import { StarIcon, StarHalfIcon, UserIcon } from '../components/Icons';
 
 export default function Home() {
