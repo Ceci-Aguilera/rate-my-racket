@@ -79,7 +79,7 @@ export default function Account() {
                                     </div>
                                     <div className={styles.account_p_div}>
                                         <p className={styles.account_p}><span className={styles.account_p_span}>Email:</span> {user.user.email}</p>
-                                        {user.is_email_verified ? <div></div> : <Button variant="outline-success" className={styles.account_verify_email_address_button}>Verify</Button>}
+                                        {/* {user.is_email_verified ? <div></div> : <Button variant="outline-success" className={styles.account_verify_email_address_button}>Verify</Button>} */}
                                     </div>
 
                                     <div className={styles.account_p_div}>

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "accounts_app",
+    "comments_rackets_app",
 ]
 
 MIDDLEWARE = [
