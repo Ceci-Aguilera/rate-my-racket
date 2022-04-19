@@ -6,4 +6,6 @@ app_name = 'comments_rackets_app'
 
 urlpatterns = [
     url(r'^brands/$', BrandListView.as_view(), name='brand-list-api'),
+    url(r'^top-principal-rated/$', TopPrincipalRatedView.as_view(), name='top-principal-rated-api'),
+    url(r'^brand-rackets/(?P<brand_id>\d+)/$', BrandRetriveView.as_view(), name='brand-rackets-api'),
 ]

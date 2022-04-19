@@ -10,7 +10,6 @@ import { useEffect, useState } from "react"
 
 import { Row, Col, Container, Button } from "react-bootstrap";
 
-import { useAuth } from "../context/AuthContext"
 import TopRackets from '../components/TopRackets'
 
 import {RightArrowIcon} from "../components/Icons"
@@ -19,7 +18,6 @@ const domain = process.env.NEXT_PUBLIC_BACKEND_API_URL
 
 export default function Brands() {
 
-    const { user, update_userprofile, update_userInfo } = useAuth()
 
     const [brands, setBrands] = useState([])
 
@@ -30,11 +28,9 @@ export default function Brands() {
             setBrands(temp_brands.brands)
         }
 
-        if (user != null) {
             FetchBrands()
-        }
 
-    }, [user])
+    }, [])
 
     return (brands == null) ? <div></div> : (
         <div className={styles.container}>
@@ -56,7 +52,7 @@ export default function Brands() {
                                 <TopRackets rackets={brand.top_rackets} />
 
                                 <div className={styles.brands_div_button}>
-                                    <Button variant="primary" className={styles.brands_button}>
+                                    <Button href={`/brands/${brand.id}`} variant="primary" className={styles.brands_button}>
                                         All {brand.title} Rackets <RightArrowIcon height={30} width={30} fill={"white"} className={styles.brands_button_icon}/>
                                     </Button>
                                 </div>
@@ -77,7 +73,7 @@ const getBrands = async () => {
         }
     }
 
-    const brands_url = `${domain}/comments-rackets-app/brands`
+    const brands_url = `${domain}/comments-rackets-app/brands/`
 
 
     return axios.get(brands_url, config).then(async (res) => {

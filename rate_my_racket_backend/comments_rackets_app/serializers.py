@@ -23,3 +23,16 @@ class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
         fields = '__all__'
+
+
+class BrandAllRacketsSerializer(serializers.ModelSerializer):
+
+    all_rackets = serializers.SerializerMethodField(source='get_all_rackets')
+
+    def get_all_rackets(self, obj):
+        rackets = obj.racket_set.all().order_by(-(F('overall_rating') * F('amount_of_votes')))
+        return RacketSerializer(rackets, context=self.context, many=True).data
+
+    class Meta:
+        model = Brand
+        fields = '__all__'

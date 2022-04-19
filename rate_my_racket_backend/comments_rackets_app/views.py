@@ -16,6 +16,8 @@ from .models import *
 from .serializers import *
 
 
+from .models import *
+
 # Create your views here.
 
 class BrandListView(ListCreateAPIView):
@@ -33,3 +35,21 @@ class RacketListView(ListCreateAPIView):
     serializer_class = RacketSerializer
     model = Racket
     queryset = Racket.objects.all()
+
+
+class TopPrincipalRatedView(ListCreateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = RacketSerializer
+    model = Racket
+    queryset = Racket.objects.all().order_by(-(F('overall_rating') * F('amount_of_votes')))[:3]
+
+
+class BrandRetriveView(RetrieveAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = BrandAllRacketsSerializer
+    model = Brand
+    lookup_url_kwarg = 'brand_id'
+    queryset = Brand.objects.all()
+
