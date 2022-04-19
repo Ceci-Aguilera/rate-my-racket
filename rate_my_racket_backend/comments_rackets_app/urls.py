@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^brands/$', BrandListView.as_view(), name='brand-list-api'),
     url(r'^top-principal-rated/$', TopPrincipalRatedView.as_view(), name='top-principal-rated-api'),
     url(r'^brand-rackets/(?P<brand_id>\d+)/$', BrandRetriveView.as_view(), name='brand-rackets-api'),
+    url(r'^racket/(?P<racket_id>\d+)/$', RacketRetriveView.as_view(), name='racket-api'),
 ]

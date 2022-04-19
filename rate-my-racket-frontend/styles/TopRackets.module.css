@@ -74,6 +74,9 @@
 .top_racket_img {
   opacity: 1;
   transition: opacity 1s !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center;
 }
 
 .top_rackets_element_div:hover .top_racket_img {

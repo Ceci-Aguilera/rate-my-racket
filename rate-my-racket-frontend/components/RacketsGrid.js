@@ -32,6 +32,10 @@ function RacketsGrid({ rackets }) {
                                                     <div className={styles.racketsGrid_card_element_img_div}>
                                                         <img src={racket.image} alt="Silver Racket" className={styles.racketsGrid_card_element_img} />
                                                     </div>
+
+                                                    <div className={styles.racketsGrid_card_element_s_img_div}>
+                                                        <img src={racket.secondary_image} alt="Silver Racket" className={styles.racketsGrid_card_element_s_img} />
+                                                    </div>
                                                 </div>
                                             </Link>
 
@@ -62,7 +66,7 @@ function RacketsGrid({ rackets }) {
                                             Details
                                         </Button>
 
-                                        <Button variant="primary" className={styles.racketsGrid_card_footer_button_no_outline}>
+                                        <Button href={`/rate/${racket.id}`} variant="primary" className={styles.racketsGrid_card_footer_button_no_outline}>
                                             Rate
                                         </Button>
                                     </Card.Footer>

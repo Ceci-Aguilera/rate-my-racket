@@ -1,0 +1,146 @@
+.rate_racket_div, .rate_racket_row{
+    width: 100%;
+}
+
+.rate_racket_img_div, .rate_racket_img{
+    width: 100%;
+    max-width:400px;
+    height:100%;
+    max-height:700px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align:center;
+}
+
+.rate_racket_img_div{
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.rate_racket_img{
+    transition: all 0.3s ease 0s;
+    width: 100%;
+}
+
+.rate_racket_img:hover{
+    transform: scale(1.25);
+}
+
+.rate_racket_form{
+    margin-top: 50px;
+}
+
+.rate_racket_form_group{
+    margin-top: 30px;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.rate_racket_form_label_p{
+    width: 150px;
+    font-weight: bold;
+}
+
+.rate_racket_form_control_div{
+    width: 350px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.rate_racket_form_control_element_span, .rate_racket_form_control_element_span_active{
+    color: #38b6ff;
+    cursor: pointer;
+}
+
+.rate_racket_form_control_element_button_active{
+    color: white;
+    background-color: #38b6ff;
+    border: 1px solid #38b6ff;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.rate_racket_form_control_element_button_active:hover,
+.rate_racket_form_control_element_button_active:active,
+.rate_racket_form_control_element_button_active:after,
+.rate_racket_form_control_element_button_active:focus{
+    color: white;
+    background-color: #38b6ff;
+    border: 1px solid #38b6ff;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.rate_racket_form_control_element_button{
+    color: #aaaaaa;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.rate_racket_form_control_element_button:hover,
+.rate_racket_form_control_element_button:active,
+.rate_racket_form_control_element_button:after,
+.rate_racket_form_control_element_button:focus{
+    color: white;
+    background-color: #38b6ff;
+    border: 1px solid #38b6ff;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.rate_racket_comments_div{
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 50px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.rate_racket_label_p{
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex !important;
+    flex-direction: row !important;
+    line-height: 60px;
+}
+
+.rate_racket_label_p_span{
+    margin-left: 10px;
+}
+
+.rate_racket_rate_button_div{
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 50px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: right;
+}
+
+.rate_racket_rate_button{
+    color: white;
+    background-color: #38b6ff;
+    border: 1px solid #38b6ff;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.account_icon_div{
+    width: 65px;
+    height: 65px;
+    margin-left: 10px;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 65px;
+}
+
+.account_selected_icon{
+    margin-top: -5px;
+    text-align: center;
+    line-height: 65px;
+}

@@ -16,6 +16,7 @@ class Racket(models.Model):
 
     title = models.CharField(max_length=256, default="Brand Name")
     image = models.ImageField(upload_to='rackets/', blank=True, null=True)
+    secondary_image = models.ImageField(upload_to='rackets_secondary/', blank=True, null=True)
     head_size = models.FloatField(default=0.0)
     length = models.FloatField(default=0.0)
     weight_strung = models.FloatField(default=0.0)
