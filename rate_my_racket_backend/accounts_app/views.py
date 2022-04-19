@@ -67,3 +67,14 @@ class CheckAuthenticatedView(RetrieveAPIView):
 
     def get_object(self):
         return self.request.user.userprofile
+
+
+class UserProfileUpdate(UpdateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = UserProfileSerializer
+    lookup_url_kwarg = 'user_id'
+
+    def get_object(self):
+        user_id = self.kwargs['user_id']
+        return UserProfile.objects.get(user_id=user_id)

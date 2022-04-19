@@ -125,6 +125,29 @@ if(token != null && token != undefined){
       });
   };
 
+  const update_userprofile = async (userprofile_id, body) => {
+
+    const user_token = window.localStorage.getItem("user_token");
+  
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+    const update_userprofile_url = `${domain}/accounts-app/update/${userprofile_id}/`;
+
+    return await axios
+      .put(update_userprofile_url, body, config)
+      .then(async (response) => {
+        const res = await response.data;
+        return res;
+      })
+      .catch((error) => {
+        return "Error"
+      });
+  };
+
+
 
 
 
@@ -136,7 +159,7 @@ if(token != null && token != undefined){
 
 
   return (
-    <AuthContext.Provider value={{ user, token, logout, login, register}}>
+    <AuthContext.Provider value={{ user, token, logout, login, register, update_userprofile}}>
       {children}
     </AuthContext.Provider>
   );

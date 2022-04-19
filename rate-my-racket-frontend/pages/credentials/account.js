@@ -16,7 +16,7 @@ import { MedalIcon, TennisRacketSimpleR, TennisCourtIcon, TennisBallIcon } from 
 
 export default function Account() {
 
-    const { user } = useAuth()
+    const { user, update_userprofile } = useAuth()
 
     const router = useRouter();
 
@@ -31,6 +31,17 @@ export default function Account() {
             setSelectedIconMode(user.profile_icon_color_mode);
         }
     }, [user])
+
+    const onUpdateIcon = async(e) => {
+        e.preventDefault();
+        const body = JSON.stringify({
+            profile_icon: selected_icon,
+            profile_icon_color: selected_icon_color,
+            profile_icon_color_mode: selected_icon_mode,
+        });
+
+        const result = await update_userprofile(user.user.id, body)
+    }
 
     return (user == null) ? <div></div> : (
         <div className={styles.container}>
@@ -111,7 +122,7 @@ export default function Account() {
                                     <Row className={styles.account_icons_row}>
                                         {icons_total_colors.map((icon_color, index) => {
                                             return (
-                                                <Col xs={3} sm={3} md={3} lg={3} className={styles.account_icons_col}>
+                                                <Col key={index} xs={3} sm={3} md={3} lg={3} className={styles.account_icons_col}>
                                                     <div className={styles.account_icons_color_element_div}
                                                         onClick={(e) => setSelectedIconColor(icon_color)}
                                                         style={{ backgroundColor: icon_color, border: " 2px solid " + icon_color }}
@@ -147,7 +158,7 @@ export default function Account() {
 
                                 <Col xs={12} sm={12} md={12} lg={6} className={styles.account_card_col}>
                                 <div className={styles.account_update_icon_button_div}>
-                                        <Button className={styles.account_update_icon_button}>
+                                        <Button className={styles.account_update_icon_button} onClick = {(e) => onUpdateIcon(e)}>
                                             Update Icon
                                         </Button>
                                     </div>
