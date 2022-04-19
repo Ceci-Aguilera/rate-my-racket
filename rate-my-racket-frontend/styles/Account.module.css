@@ -1,0 +1,103 @@
+.account_div_wrapper{
+    width: 100%;
+    height: 100vh;
+}
+
+.account_card{
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 50px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 100px;
+    border-radius: 20px !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.account_card_header{
+    background-color: #38b6ff !important;
+    color: white;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+
+.account_p{
+    font-size: 1.1rem;
+}
+
+.account_p_span{
+    font-weight: bold;
+}
+
+.account_p_div{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    line-height: 40px;
+}
+
+.account_verify_email_address_button{
+    width: 100px;
+    height: 40px;
+    font-size: 1.1rem;
+    margin-left: 10px;
+}
+
+.account_card_header_title{
+    text-align: center;
+}
+
+.account_icon_div{
+    width: 65px;
+    height: 65px;
+    margin-left: 10px;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 65px;
+}
+
+.account_selected_icon{
+    margin-top: -5px;
+    text-align: center;
+    line-height: 65px;
+}
+
+.account_p_icons_div{
+    margin-top: 25px;
+}
+
+.account_selected_icon_div{
+    line-height: 65px;
+}
+
+.account_icons_row{
+    width: 100%;
+}
+
+.account_icons_color_element_div{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 65px;
+}
+
+.account_outline_div{
+    margin-top: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;;
+}
+
+.account_update_icon_button_div{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto !important;
+    padding-right: 100px !important;
+    text-align: center;
+}
+
+.account_update_icon_button{
+    width: 80%;
+    font-size: 1.2rem;
+}

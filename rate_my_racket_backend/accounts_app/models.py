@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True) 
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='userprofile') 
     is_email_verified = models.BooleanField(default=False)
 
     profile_icon = models.CharField(max_length=50, default="Racket")

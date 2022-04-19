@@ -32,7 +32,6 @@ export const getUser = async () => {
         if (response.data) {
           
           const res = await response.data;
-          console.log(res)
           if(res.username != "")
           {
             return { status: "SIGNED_IN", user: res};

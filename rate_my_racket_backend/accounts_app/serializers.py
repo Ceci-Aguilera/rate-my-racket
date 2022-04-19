@@ -44,13 +44,11 @@ class LoginSerializer(serializers.Serializer):
 
 
 class UserSimpleSerializer(serializers.Serializer):
-
-    class Meta:
-        model = User 
-        fields = ('username', 'email', )
+    username = serializers.CharField(max_length=255)
+    email = serializers.CharField(max_length=255)
 
 
-class UserProfileSerializer(serializers.Serializer):
+class UserProfileSerializer(serializers.ModelSerializer):
 
     user = UserSimpleSerializer(read_only=True)
 

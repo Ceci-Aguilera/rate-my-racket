@@ -62,7 +62,7 @@ function CustomNavbar() {
             : ""}
 
             {user ?
-            <Link href="/">
+            <Link href="/credentials/account">
               <a className={styles.navbar_link}>
                 Account
               </a>
