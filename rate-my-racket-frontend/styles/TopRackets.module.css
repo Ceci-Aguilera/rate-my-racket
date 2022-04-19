@@ -3,14 +3,14 @@
 }
 
 .top_rackets_section_title {
-  margin-top: 50px;
+  margin-top: 20px;
   font-weight: bold;
   text-align: center;
 }
 
 .top_rackets_row {
-  width: 100%;
-  max-width: 1000px;
+  width: 90%;
+  max-width: 1200px;
   margin-top: 25px;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -22,19 +22,42 @@
   align-items: center;
 }
 
-.top_rackets_element_div_wrapper {
+.top_racket_card{
   width: 100%;
+  max-width: 300px;
   background-color: white;
   margin-left: auto !important;
   margin-right: auto !important;
   border: 1px solid #cbcaca;
   border-radius: 20px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  transition: width 2s;
-  text-align: center;
+}
+
+.top_racket_card_gold{
+  width: 100%;
+  max-width: 350px;
+}
+
+.top_racket_card_silver{
+  margin-top: 10px;
+  max-width: 330px;
+}
+
+.top_racket_card_bronze{
+  margin-top: 20px;
+  max-width: 310px;
+}
+
+.top_racket_card_body{
+  height: max-content !important;
+}
+
+
+.top_rackets_element_div_wrapper {
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
 }
 
 .top_rackets_element_div {
@@ -45,6 +68,7 @@
   text-align: center;
   position: relative;
   background-color: white;
+  display: inline-block !important;
 }
 
 .top_racket_img {
@@ -53,59 +77,27 @@
 }
 
 .top_rackets_element_div:hover .top_racket_img {
-  opacity: 0.15;
+  opacity: 0.5;
   transition: opacity 0.5s !important;
-}
-
-.top_racket_rate_p {
-  color: transparent;
-  text-decoration: underline 3px transparent;
-  margin-top: 150px !important;
-  font-size: 1.5rem;
-  transition: color 1s, text-decoration 1s;
-}
-
-.top_rackets_element_div:hover .top_racket_rate_p {
-  color: #38b6ff;
-  text-decoration: underline 3px #38b6ff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  transition: color 1s, text-decoration 1s;
 }
 
 .top_rackets_element_div:hover {
   cursor: pointer;
 }
 
-.top_rackets_element_div_gold {
-  height: 420px;
-  max-width: 200px;
-}
-
 .top_rackets_element_div_wrapper_gold {
-  height: 470px;
-  max-width: 350px;
-}
-
-.top_rackets_element_div_silver {
-  height: 400px;
-  max-width: 180px;
-}
-
-.top_rackets_element_div_wrapper_silver {
-  margin-top: 10px;
   height: 450px;
   max-width: 330px;
 }
 
-.top_rackets_element_div_bronze {
-  height: 380px;
-  max-width: 160px;
+
+.top_rackets_element_div_wrapper_silver {
+  height: 430px;
+  max-width: 320px;
 }
 
 .top_rackets_element_div_wrapper_bonze {
-  margin-top: 20px;
-  height: 430px;
+  height: 410px;
   max-width: 310px;
 }
 
@@ -131,16 +123,45 @@
 }
 
 .top_racket_gold_img {
-  height: 420px !important;
+  height: 380px !important;
   max-width: 200px !important;
 }
 
 .top_racket_silver_img {
-  height: 400px;
+  height: 360px;
   max-width: 180px;
 }
 
 .top_racket_bronze_img {
-  height: 380px;
+  height: 340px;
   max-width: 160px;
+}
+
+.top_rackets_card_footer{
+  width: 100%;
+  background-color: white;
+  border: 1px solid white !important;
+  border-radius: 50px !important;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+
+.top_rackets_card_footer_button_no_outline, .top_rackets_card_footer_button_outline{
+  width: 100%;
+  max-width: 100px;
+  font-size: 1.1rem;
+}
+
+.top_rackets_card_footer_button_outline{
+  color: #38b6ff;
+  border-color: #38b6ff;
+  font-weight: bold;
+}
+
+.top_rackets_card_footer_button_no_outline{
+  background-color: #38b6ff;
+  border-color: #38b6ff;
+  font-size: 1.1rem;
+  font-weight: bold;
 }

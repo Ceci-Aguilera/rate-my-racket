@@ -15,7 +15,7 @@ class Racket(models.Model):
     brand = models.ForeignKey(Brand, null=True, on_delete=models.CASCADE)
 
     title = models.CharField(max_length=256, default="Brand Name")
-    image = models.ImageField(upload_to='brands/', blank=True, null=True)
+    image = models.ImageField(upload_to='rackets/', blank=True, null=True)
     head_size = models.FloatField(default=0.0)
     length = models.FloatField(default=0.0)
     weight_strung = models.FloatField(default=0.0)

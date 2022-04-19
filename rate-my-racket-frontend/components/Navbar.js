@@ -41,7 +41,7 @@ function CustomNavbar() {
             </a>
           </Link>
 
-          <Link href="/">
+          <Link href="/brands">
             <a className={styles.navbar_link}>
               Brands
             </a>

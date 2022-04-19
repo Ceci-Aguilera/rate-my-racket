@@ -25,4 +25,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^accounts-app/', include('accounts_app.urls', namespace="accounts-app-namespace")),
     url(r'^comments-rackets-app/', include('comments_rackets_app.urls', namespace="comments-rackets-app-namespace")),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

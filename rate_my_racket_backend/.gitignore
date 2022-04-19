@@ -1,0 +1,9 @@
+*.pyc
+/backend/db.sqlite3
+.DS_Store
+.env
+*/settings/local.py
+/static/*
+/media/*
+__pycache__/
+/.vscode/

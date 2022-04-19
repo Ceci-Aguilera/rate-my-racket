@@ -1,0 +1,43 @@
+.brands_div_wrapper{
+    width: 100%;
+}
+
+.brand_img_div, .brand_img{
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    max-height: 300px;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    text-align: center;
+}
+
+.brand_div{
+    margin-top: 50px;
+}
+
+.brand_img{
+    margin-bottom: 20px;
+}
+
+.brands_div_button{
+    margin-top: 50px;
+    margin-left: auto !important;
+    margin-right:auto !important;
+    text-align: center;
+}
+
+.brands_button{
+    height: 50px;
+    background-color: #38b6ff;
+    border-color: #38b6ff;
+    margin-bottom: 100px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    line-height: 30px;
+}
+
+.brands_button_icon{
+    margin-left: 15px;
+}

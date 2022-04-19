@@ -17,3 +17,19 @@ from .serializers import *
 
 
 # Create your views here.
+
+class BrandListView(ListCreateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = BrandSerializer
+    model = Brand
+    queryset = Brand.objects.all()
+
+
+
+class RacketListView(ListCreateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = RacketSerializer
+    model = Racket
+    queryset = Racket.objects.all()
