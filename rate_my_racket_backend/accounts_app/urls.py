@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^check-auth/$', CheckAuthenticatedView.as_view(), name='check-auth-api'),
     url(r'^register/$', RegisterView.as_view(), name='register-api'),
     url(r'^update/(?P<user_id>\d+)/$', UserProfileUpdate.as_view(), name='userprofile-update-api'),
+    url(r'^user/update/(?P<user_id>\d+)/$', UserUpdate.as_view(), name='user-update-api'),
 ]

@@ -78,3 +78,18 @@ class UserProfileUpdate(UpdateAPIView):
     def get_object(self):
         user_id = self.kwargs['user_id']
         return UserProfile.objects.get(user_id=user_id)
+
+
+class UserUpdate(UpdateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = UserCRUDSerializer
+    lookup_url_kwarg = 'user_id'
+
+    def get_object(self):
+        user_id = self.kwargs['user_id']
+        user = User.objects.get(id=user_id)
+        userprofile = user.userprofile
+        userprofile.is_email_verified = False
+        userprofile.save()
+        return user

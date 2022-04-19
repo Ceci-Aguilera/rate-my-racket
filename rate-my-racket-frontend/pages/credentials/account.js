@@ -13,16 +13,22 @@ import { useAuth } from "../../context/AuthContext"
 import { useRouter } from 'next/router';
 
 import { MedalIcon, TennisRacketSimpleR, TennisCourtIcon, TennisBallIcon } from "../../components/Icons"
+import EditAccountInfoModal from '../../components/EditAccountInfoModal'
 
 export default function Account() {
 
-    const { user, update_userprofile } = useAuth()
+    const { user, update_userprofile, update_userInfo } = useAuth()
 
     const router = useRouter();
 
     const [selected_icon, setSelectedIcon] = useState("");
     const [selected_icon_color, setSelectedIconColor] = useState("");
     const [selected_icon_mode, setSelectedIconMode] = useState(true);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         if (user != null) {
@@ -41,6 +47,11 @@ export default function Account() {
         });
 
         const result = await update_userprofile(user.user.id, body)
+    }
+
+    const onUpdateInfo = async(body) => {
+        const result = await update_userInfo(user.user.id, body)
+        window. location. reload()
     }
 
     return (user == null) ? <div></div> : (
@@ -68,7 +79,7 @@ export default function Account() {
                                     </div>
                                     <div className={styles.account_p_div}>
                                         <p className={styles.account_p}><span className={styles.account_p_span}>Email:</span> {user.user.email}</p>
-                                        {user.email_verified ? <div></div> : <Button variant="outline-success" className={styles.account_verify_email_address_button}>Verify</Button>}
+                                        {user.is_email_verified ? <div></div> : <Button variant="outline-success" className={styles.account_verify_email_address_button}>Verify</Button>}
                                     </div>
 
                                     <div className={styles.account_p_div}>
@@ -150,7 +161,7 @@ export default function Account() {
                             <Row className={styles.account_card_row}>
                             <Col xs={12} sm={12} md={12} lg={6} className={styles.account_card_col}>
                                 <div className={styles.account_update_icon_button_div}>
-                                        <Button className={styles.account_update_icon_button}>
+                                        <Button className={styles.account_update_icon_button} onClick={(e) => handleShow()}>
                                             Edit Info
                                         </Button>
                                     </div>
@@ -168,6 +179,8 @@ export default function Account() {
                     </Card>
 
                 </div>
+
+                <EditAccountInfoModal user={user} show={show} handleClose={handleClose} onEdit={onUpdateInfo} />
             </main>
         </div>
     )
