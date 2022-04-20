@@ -43,6 +43,10 @@ export default function Home() {
           <Row className={styles.index_row}>
             <Col xs={12} sm={12} md={12} lg={8} className={styles.index_col}>
 
+            <h1 className={styles.top_rackets_section_title}>
+                Best Overall Rackets
+            </h1>
+
               <TopRackets rackets={top_rated_rackets} />
 
             </Col>

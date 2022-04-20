@@ -42,7 +42,7 @@ class TopPrincipalRatedView(ListCreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RacketSerializer
     model = Racket
-    queryset = Racket.objects.all().order_by(-(F('overall_rating') * F('amount_of_votes')))[:3]
+    queryset = Racket.objects.all().order_by("-points")[:3]
 
 
 class BrandRetriveView(RetrieveAPIView):

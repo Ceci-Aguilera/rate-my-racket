@@ -89,18 +89,18 @@
 }
 
 .top_rackets_element_div_wrapper_gold {
-  height: 450px;
+  height: 480px;
   max-width: 330px;
 }
 
 
 .top_rackets_element_div_wrapper_silver {
-  height: 430px;
+  height: 460px;
   max-width: 320px;
 }
 
 .top_rackets_element_div_wrapper_bonze {
-  height: 410px;
+  height: 440px;
   max-width: 310px;
 }
 
@@ -113,14 +113,27 @@
   margin-top: 10px;
 }
 
+.top_stars_s_div{
+  display: flex;
+  flex-flow: row;
+}
+
 .top_rackets_p {
+  margin-top: 10px;
   font-size: 1.1rem;
   font-weight: bold;
 }
 
 .top_racket_amount_span {
   color: #38b6ff;
-  margin-left: 5px;
+  margin-left: 10px;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+.top_racket_star_p_span{
+  color: #38b6ff;
+  margin-left: 10px;
   font-weight: bold;
   line-height: 30px;
 }
@@ -128,16 +141,25 @@
 .top_racket_gold_img {
   height: 380px !important;
   max-width: 200px !important;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .top_racket_silver_img {
   height: 360px;
   max-width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .top_racket_bronze_img {
   height: 340px;
   max-width: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .top_rackets_card_footer{
@@ -166,5 +188,10 @@
   background-color: #38b6ff;
   border-color: #38b6ff;
   font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.top_rackets_points{
+  font-size: 1.5rem;
   font-weight: bold;
 }

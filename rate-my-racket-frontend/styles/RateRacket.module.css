@@ -4,7 +4,7 @@
 
 .rate_racket_img_div, .rate_racket_img{
     width: 100%;
-    max-width:400px;
+    max-width:300px;
     height:100%;
     max-height:700px;
     margin-left: auto !important;
@@ -43,7 +43,7 @@
 }
 
 .rate_racket_form_control_div{
-    width: 350px;
+    width: 600px;
     margin-left: 50px;
     display: flex;
     flex-direction: row;

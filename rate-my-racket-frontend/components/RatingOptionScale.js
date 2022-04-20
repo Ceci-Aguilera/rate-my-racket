@@ -14,7 +14,7 @@ const RatingOptionScale = ({ option_name, current_option, setOption }) => {
                 <p className={styles.rate_racket_form_label_p}>{option_name}: </p>
             </div>
             <div className={styles.rate_racket_form_control_div}>
-                {[1, 2, 3, 4, 5].map((rating_opt, index) => {
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((rating_opt, index) => {
                     return (
                         <div className={styles.rate_racket_form_control_element_div}>
                             {(rating_opt == current_option) ?
@@ -28,10 +28,10 @@ const RatingOptionScale = ({ option_name, current_option, setOption }) => {
                 })}
                 <div className={styles.rate_racket_form_control_element_div}>
                     {
-                        (6 == current_option) ?
+                        (11 == current_option) ?
                             <Button className={styles.rate_racket_form_control_element_button_active}>{"Don't Know"}</Button> : (
                                 <Button className={styles.rate_racket_form_control_element_button}
-                                    onClick={(e) => setOption(6)}
+                                    onClick={(e) => setOption(11)}
                                 >{"Don't Know"}</Button>
                             )
                     }

@@ -44,19 +44,23 @@ function RacketsGrid({ rackets }) {
 
                                             <div className={styles.racketsGrid_stars_div}>
 
-                                                {calculateRating(racket.overall_rating, "#38b6ff").map((top_star, index) => {
+                                                {/* {calculateRating(racket.overall_rating, "#38b6ff").map((top_star, index) => {
                                                     return (
                                                         <div key={index} className={styles.racketsGrid_stars_div}>
                                                             {top_star}
                                                         </div>
                                                     );
-                                                })}
+                                                })} */}
 
-                                                <span className={styles.racketsGrid_amount_span}>( {racket.amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span>
+                                                <span className={styles.racketsGrid_points_span}>
+                                                    {racket.points} Points
+                                                </span>
+
+                                                {/* <span className={styles.racketsGrid_amount_span}>( {racket.overall_rating} <StarIcon height="15" width="15" fill={"#38b6ff"} /> )</span> */}
 
                                             </div>
 
-                                            <p className={styles.racketsGrid_p}>{racket.title}</p>
+                                            <p className={styles.racketsGrid_p}>{racket.title} <span className={styles.racketsGrid_amount_span}>( {racket.amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span></p> 
                                         </div>
 
                                     </Card.Body>

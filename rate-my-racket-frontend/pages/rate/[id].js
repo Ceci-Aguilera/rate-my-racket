@@ -30,6 +30,7 @@ const RateRacket = ({ id }) => {
     const [stable_rating, setStableRating] = useState(6);
     const [racket_sweet_spot_rating, setRacketSweetSpot] = useState(6);
     const [volley_rating, setVolleyRating] = useState(6);
+    const [overall_rating, setOverallRating] = useState(6);
     const [audience, setAudience] = useState("Beginner");
 
     const router = useRouter();
@@ -74,6 +75,7 @@ const RateRacket = ({ id }) => {
                             <RatingOptionScale option_name="During Volley" current_option={volley_rating} setOption={setVolleyRating} />
                             <RatingOptionScale option_name="Sweet Spot" current_option={racket_sweet_spot_rating} setOption={setRacketSweetSpot} />
                             <RatingOptionScale option_name="Stability" current_option={stable_rating} setOption={setStableRating} />
+                            <RatingOptionScale option_name="Overall Rating" current_option={overall_rating} setOption={setOverallRating} />
 
                             <div className={styles.rate_racket_form_group}>
                                 <div className={styles.rate_racket_form_label_div}>

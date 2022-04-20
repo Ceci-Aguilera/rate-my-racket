@@ -17,10 +17,6 @@ function TopRackets({ rackets }) {
 
         <div className={styles.top_rackets_div}>
 
-            <h1 className={styles.top_rackets_section_title}>
-                Most Rated Rackets
-            </h1>
-
             <Row className={styles.top_rackets_row}>
 
                 <Col xs={4} sm={4} md={4} lg={4} className={styles.top_rackets_col}>
@@ -44,19 +40,23 @@ function TopRackets({ rackets }) {
 
                                     <div className={styles.top_stars_div}>
 
-                                        {calculateRating(rackets[1].overall_rating, "silver").map((top_star, index) => {
+                                        {/* {calculateRating(0, rackets[1].overall_rating, "silver").map((top_star, index) => {
                                             return (
                                                 <div key={index} className={styles.top_star_div}>
                                                     {top_star}
                                                 </div>
                                             );
-                                        })}
+                                        })} */}
 
-                                        <span className={styles.top_racket_amount_span}>( {rackets[1].amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span>
+                                        {/* <span className={styles.top_racket_star_p_span}>( {rackets[1].overall_rating} <StarIcon height="15" width="15" fill={"#38b6ff"} /> )</span> */}
+
+                                        <span className={styles.top_rackets_points} style={{ color: "silver" }}>{rackets[1].points} Points</span>
 
                                     </div>
 
-                                    <p className={styles.top_rackets_p}>#2 {rackets[1].title}</p>
+                                    <p className={styles.top_rackets_p}><span style={{ color: "silver" }} className={styles.top_rackets_points}>#2</span> {rackets[1].title}
+                                        <span className={styles.top_racket_amount_span}>( {rackets[1].amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span>
+                                    </p>
                                 </div>
 
                             </Card.Body>
@@ -66,7 +66,7 @@ function TopRackets({ rackets }) {
                                     Details
                                 </Button>
 
-                                <Button variant="primary" className={styles.top_rackets_card_footer_button_no_outline}>
+                                <Button href={`/rate/${rackets[1].id}`} variant="primary" className={styles.top_rackets_card_footer_button_no_outline}>
                                     Rate
                                 </Button>
                             </Card.Footer>
@@ -92,19 +92,24 @@ function TopRackets({ rackets }) {
 
                                     <div className={styles.top_stars_div}>
 
-                                        {calculateRating(rackets[0].overall_rating, "gold").map((top_star, index) => {
+                                        {/* {calculateRating(0, rackets[0].overall_rating, "gold").map((top_star, index) => {
                                             return (
                                                 <div key={index} className={styles.top_star_div}>
                                                     {top_star}
                                                 </div>
                                             );
-                                        })}
+                                        })} */}
 
-                                        <span className={styles.top_racket_amount_span}>( {rackets[0].amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span>
+                                        {/* <span className={styles.top_racket_star_p_span}>( {rackets[0].overall_rating} <StarIcon height="15" width="15" fill={"#38b6ff"} /> )</span> */}
+
+                                        <span className={styles.top_rackets_points} style={{ color: "goldenrod" }}>{rackets[0].points} Points</span>
 
                                     </div>
 
-                                    <p className={styles.top_rackets_p}>#1 {rackets[0].title}</p>
+
+                                    <p className={styles.top_rackets_p}><span style={{ color: "goldenrod" }} className={styles.top_rackets_points}>#1</span> {rackets[0].title}
+                                        <span className={styles.top_racket_amount_span}>( {rackets[0].amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span>
+                                    </p>
                                 </div>
 
 
@@ -115,7 +120,7 @@ function TopRackets({ rackets }) {
                                     Details
                                 </Button>
 
-                                <Button variant="primary" className={styles.top_rackets_card_footer_button_no_outline}>
+                                <Button href={`/rate/${rackets[0].id}`} variant="primary" className={styles.top_rackets_card_footer_button_no_outline}>
                                     Rate
                                 </Button>
                             </Card.Footer>
@@ -127,6 +132,7 @@ function TopRackets({ rackets }) {
                 <Col xs={4} sm={4} md={4} lg={4} className={styles.top_rackets_col}>
                     {rackets[2] == undefined ? <div></div> :
                         <Card className={`${styles.top_racket_card} ${styles.top_racket_card_bronze}`}>
+
 
                             <Card.Body className={styles.top_racket_card_body}>
 
@@ -141,19 +147,25 @@ function TopRackets({ rackets }) {
 
                                     <div className={styles.top_stars_div}>
 
-                                        {calculateRating(rackets[2].overall_rating, "#cd7f32").map((top_star, index) => {
+                                        {/* {calculateRating(0, rackets[2].overall_rating, "#cd7f32").map((top_star, index) => {
                                             return (
                                                 <div key={index} className={styles.top_star_div}>
                                                     {top_star}
                                                 </div>
                                             );
-                                        })}
+                                        })} */}
 
-                                        <span className={styles.top_racket_amount_span}>( {rackets[2].amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span>
+                                        {/* <span className={styles.top_racket_star_p_span}>( {rackets[2].overall_rating} <StarIcon height="15" width="15" fill={"#38b6ff"} /> )</span> */}
+
+                                        <span className={styles.top_rackets_points} style={{ color: "#cd7f32" }}>{rackets[2].points} Points</span>
+
 
                                     </div>
 
-                                    <p className={styles.top_rackets_p}>#3 {rackets[2].title}</p>
+
+                                    <p className={styles.top_rackets_p}><span style={{ color: "#cd7f32" }} className={styles.top_rackets_points}>#3</span> {rackets[2].title}
+                                        <span className={styles.top_racket_amount_span}>( {rackets[2].amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span>
+                                    </p>
 
                                 </div>
 
@@ -164,7 +176,7 @@ function TopRackets({ rackets }) {
                                     Details
                                 </Button>
 
-                                <Button variant="primary" className={styles.top_rackets_card_footer_button_no_outline}>
+                                <Button href={`/rate/${rackets[2].id}`} variant="primary" className={styles.top_rackets_card_footer_button_no_outline}>
                                     Rate
                                 </Button>
                             </Card.Footer>
@@ -183,12 +195,12 @@ function TopRackets({ rackets }) {
 }
 
 
-const calculateRating = (rate, color) => {
+const calculateRating = (index, rate, color) => {
     var array_of_stars = []
 
     const star_size = "20";
 
-    for (var i = 0; i < rate; i++) {
+    for (var i = index; i < rate; i++) {
         if (i + 1 <= rate) {
             array_of_stars.push(<StarIcon height={star_size} width={star_size} fill={color} />)
         }
