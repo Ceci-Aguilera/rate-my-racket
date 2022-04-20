@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.models import User
 
 import json
 
@@ -17,6 +18,9 @@ from .serializers import *
 
 
 from .models import *
+
+from accounts_app.models import UserProfile
+
 
 # Create your views here.
 
@@ -63,3 +67,25 @@ class RacketRetriveView(RetrieveAPIView):
     lookup_url_kwarg = 'racket_id'
     queryset = Racket.objects.all()
 
+
+class CreateCommentView(APIView):
+
+    def post(self, request, racket_id, userprofile_id):
+
+        data = request.data
+
+        racket = Racket.objects.get(id=racket_id)
+        user = User.objects.get(id=userprofile_id)
+        userprofile = user.userprofile
+
+        rating_comment = RatingCommentSerializer(data=data)
+
+        if rating_comment.is_valid() == False:
+            return Response({"Result": "Error while creating comment"}, status=status.HTTP_400_BAD_REQUEST)
+
+        rating_comment = rating_comment.save()
+        rating_comment.userprofile = userprofile
+        rating_comment.racket = racket
+        rating_comment.save()
+
+        return Response({"Result": "Success"}, status=status.HTTP_200_OK)

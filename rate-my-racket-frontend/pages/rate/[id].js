@@ -33,6 +33,8 @@ const RateRacket = ({ id }) => {
     const [overall_rating, setOverallRating] = useState(6);
     const [audience, setAudience] = useState("Beginner");
 
+    const [comments, setComments] = useState("");
+
     const router = useRouter();
 
     useEffect(() => {
@@ -48,22 +50,45 @@ const RateRacket = ({ id }) => {
 
     }, [id, user])
 
-    const onSubmit = async (e) => {
+
+    const onCreateComment = async (e) => {
         e.preventDefault();
+
+        const body = JSON.stringify({
+            spin_rating,
+            maneuverable_rating,
+            flexibility_rating,
+            comfort_rating,
+            control_rating,
+            power_rating,
+            serving_rating,
+            stable_rating,
+            racket_sweet_spot_rating,
+            volley_rating,
+            overall_rating,
+            audience,
+            comments
+        });
+
+        const result = await createComment(racket.id, user.user.id, body);
+
+        if (result == "Success") {
+            router.push('/')
+        }
     }
 
     return (racket == null || user == null) ? <div><Link href="/credentials/login"><a>Login</a></Link> before rating this racket</div> : (
         <div className={styles.rate_racket_div}>
-            <Row className={styles.rate_racket_row}>
-                <Col xs={12} sm={12} md={12} lg={6} className={styles.rate_racket_col}>
-                    <div className={styles.rate_racket_img_div}>
-                        <img src={racket.image} alt="Silver Racket" className={styles.rate_racket_img} />
-                    </div>
-                </Col>
+            <Form onSubmit={(e) => onCreateComment(e)}>
+                <Row className={styles.rate_racket_row}>
+                    <Col xs={12} sm={12} md={12} lg={6} className={styles.rate_racket_col}>
+                        <div className={styles.rate_racket_img_div}>
+                            <img src={racket.image} alt="Silver Racket" className={styles.rate_racket_img} />
+                        </div>
+                    </Col>
 
-                <Col xs={12} sm={12} md={12} lg={6} className={styles.rate_racket_col}>
-                    <div className={styles.rate_racket_form}>
-                        <Form onSubmit={(e) => onSubmit(e)}>
+                    <Col xs={12} sm={12} md={12} lg={6} className={styles.rate_racket_col}>
+                        <div className={styles.rate_racket_form}>
 
                             <RatingOptionScale option_name="For Spin" current_option={spin_rating} setOption={setSpinRating} />
                             <RatingOptionScale option_name="Maneuverability" current_option={maneuverable_rating} setOption={setManeuverableRating} />
@@ -91,28 +116,28 @@ const RateRacket = ({ id }) => {
                                 </div>
                             </div>
 
-                        </Form>
-                    </div>
-                </Col>
-            </Row>
+                        </div>
+                    </Col>
+                </Row>
 
-            <div className={styles.rate_racket_comments_div}>
-                <Form.Group className="mb-3">
-                    <Form.Label className={styles.rate_racket_label_p}>
-                    <div className={styles.rate_racket_user_icon}>
-                        {SelectedIcon(user.profile_icon, user.profile_icon_color, user.profile_icon_color_mode)}
-                    </div>
-                   <span className={styles.rate_racket_label_p_span}>Post Comment About Racket</span> 
-                    </Form.Label>
-                    <Form.Control as="textarea" rows={20} />
-                </Form.Group>
-            </div>
+                <div className={styles.rate_racket_comments_div}>
+                    <Form.Group className="mb-3">
+                        <Form.Label className={styles.rate_racket_label_p}>
+                            <div className={styles.rate_racket_user_icon}>
+                                {SelectedIcon(user.profile_icon, user.profile_icon_color, user.profile_icon_color_mode)}
+                            </div>
+                            <span className={styles.rate_racket_label_p_span}>Post Comment About Racket</span>
+                        </Form.Label>
+                        <Form.Control as="textarea" rows={20} value={comments} onChange={(e) => setComments(e.target.value)} />
+                    </Form.Group>
+                </div>
 
-            <div className={styles.rate_racket_rate_button_div}>
-                <Button className={styles.rate_racket_rate_button}>
-                    Submit Rating
-                </Button>
-            </div>
+                <div className={styles.rate_racket_rate_button_div}>
+                    <Button className={styles.rate_racket_rate_button} type="submit">
+                        Submit Rating
+                    </Button>
+                </div>
+            </Form>
         </div>
     );
 };
@@ -199,6 +224,24 @@ const SelectedIcon = (icon_name, icon_color, profile_icon_color_mode) => {
     }
 
 
+}
+
+const createComment = async (racket_id, userprofile_id, body) => {
+    const config = {
+        headers: {
+            "Content-Type": "application/json",
+        }
+    }
+
+    const create_comment_url = `${domain}/comments-rackets-app/create-comment/${racket_id}/${userprofile_id}/`
+
+
+
+    return axios.post(create_comment_url, body, config).then(async (res) => {
+        return "Success"
+    }).catch((error) => {
+        return "Error"
+    })
 }
 
 

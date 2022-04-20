@@ -6,3 +6,4 @@ from .models import *
 
 admin.site.register(Brand)
 admin.site.register(Racket)
+admin.site.register(RatingComment)

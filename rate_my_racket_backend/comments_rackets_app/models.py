@@ -64,7 +64,7 @@ class RatingComment(models.Model):
     audience = models.CharField(max_length=50, default="Beginner")
 
     def __str__(self):
-        self.userprofile.user.username + " " + self.racket.title
+        return self.userprofile.user.username + " " + self.racket.title
 
 
 class OverallRacketRating(models.Model):
