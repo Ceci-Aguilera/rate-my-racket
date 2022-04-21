@@ -1,4 +1,4 @@
-import { Card, Col, Row, Container, Button, Form, Modal } from "react-bootstrap";
+import { Card, Col, Row, Container, Button, Form, Modal, Alert } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -35,7 +35,9 @@ const RateRacket = ({ id }) => {
 
     const [comments, setComments] = useState("");
 
+    const [showAlert, setShowAlert] = useState(false);
     const router = useRouter();
+
 
     useEffect(() => {
 
@@ -75,10 +77,23 @@ const RateRacket = ({ id }) => {
         if (result == "Success") {
             router.push('/')
         }
+        else{
+            setShowAlert(true);
+            window.scrollTo(0, 0);
+        }
     }
 
     return (racket == null || user == null) ? <div><Link href="/credentials/login"><a>Login</a></Link> before rating this racket</div> : (
         <div className={styles.rate_racket_div}>
+
+            {showAlert?<Alert variant="info" className={styles.alert} onClose={() => setShowAlert(false)} dismissible>
+        <Alert.Heading>Error</Alert.Heading>
+        <p>
+          You have already rated this racket.
+          Please rate another racket or go to Account {">"} Rated Rackets and edit your rating for this racket
+        </p>
+      </Alert>:<div></div>}
+
             <Form onSubmit={(e) => onCreateComment(e)}>
                 <Row className={styles.rate_racket_row}>
                     <Col xs={12} sm={12} md={12} lg={6} className={styles.rate_racket_col}>
@@ -239,8 +254,10 @@ const createComment = async (racket_id, userprofile_id, body) => {
 
     return axios.post(create_comment_url, body, config).then(async (res) => {
         return "Success"
-    }).catch((error) => {
-        return "Error"
+    }).catch(async(error) => {
+        const result = await error.response.data
+        const res = result["Result"]
+        return res;
     })
 }
 

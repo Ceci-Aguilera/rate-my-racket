@@ -78,14 +78,28 @@ class CreateCommentView(APIView):
         user = User.objects.get(id=userprofile_id)
         userprofile = user.userprofile
 
-        rating_comment = RatingCommentSerializer(data=data)
+        try:
+            rating_comment = RatingComment.objects.get(userprofile=userprofile, racket=racket)
+            return Response({"Result": "User already have comment on this racket"}, status=status.HTTP_400_BAD_REQUEST)
 
-        if rating_comment.is_valid() == False:
-            return Response({"Result": "Error while creating comment"}, status=status.HTTP_400_BAD_REQUEST)
+        except:
+            rating_comment = RatingCommentSerializer(data=data)
 
-        rating_comment = rating_comment.save()
-        rating_comment.userprofile = userprofile
-        rating_comment.racket = racket
-        rating_comment.save()
+            if rating_comment.is_valid() == False:
+                return Response({"Result": "Error while creating comment"}, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response({"Result": "Success"}, status=status.HTTP_200_OK)
+            rating_comment = rating_comment.save()
+            rating_comment.userprofile = userprofile
+            rating_comment.racket = racket
+            rating_comment.save()
+
+            racket_new_rating = ((racket.overall_rating * racket.amount_of_votes) + (rating_comment.overall_rating)) / (racket.amount_of_votes + 1)
+
+            print(racket_new_rating)
+
+            racket.overall_rating = racket_new_rating
+            racket.amount_of_votes = racket.amount_of_votes + 1
+            racket.points = racket_new_rating * racket_new_rating * (racket.amount_of_votes + 1)
+            racket.save()
+
+            return Response({"Result": "Success"}, status=status.HTTP_200_OK)

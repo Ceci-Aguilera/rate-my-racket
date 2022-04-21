@@ -144,3 +144,11 @@
     text-align: center;
     line-height: 65px;
 }
+
+.alert{
+    width: 80% !important;
+    max-width: 600px !important;
+    margin-top: 20px;
+    margin-left: auto!important;
+    margin-right: auto!important;
+}
