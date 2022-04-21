@@ -71,7 +71,7 @@ class OverallRacketRating(models.Model):
     racket = models.ForeignKey(Racket, null=True, on_delete=models.CASCADE)
     category = models.ForeignKey(CategoryRating, null=True, on_delete=models.CASCADE)
     rating = models.FloatField(default=0)
-    points = models.IntegerField(default=0)
+    points = models.FloatField(default=0)
 
     def __str__(self):
-        self.racket.title
+        return self.racket.title + " - " + self.category.title

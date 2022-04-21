@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 
 import json
 
+import math 
+
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import *
@@ -68,6 +70,31 @@ class RacketRetriveView(RetrieveAPIView):
     queryset = Racket.objects.all()
 
 
+
+
+
+# ============================================================
+#               BEGIN HELPER
+# ============================================================
+
+def updateRatingProp(overall_rating_name, amount_of_votes, new_rating, racket):
+    category = CategoryRating.objects.get(title=overall_rating_name)
+    try:
+        overall_rating_prop = OverallRacketRating.objects.get(category=category, racket=racket)
+    except:
+        overall_rating_prop = OverallRacketRating(category=category, racket=racket)
+        overall_rating_prop.save()
+    
+    overall_rating_prop.rating = (overall_rating_prop.rating * amount_of_votes + new_rating) / (amount_of_votes + 1)
+    overall_rating_prop.points = overall_rating_prop.points + math.sqrt(new_rating)
+    overall_rating_prop.save()
+
+
+
+# ============================================================
+#               END HELPER
+# ============================================================
+
 class CreateCommentView(APIView):
 
     def post(self, request, racket_id, userprofile_id):
@@ -95,11 +122,19 @@ class CreateCommentView(APIView):
 
             racket_new_rating = ((racket.overall_rating * racket.amount_of_votes) + (rating_comment.overall_rating)) / (racket.amount_of_votes + 1)
 
-            print(racket_new_rating)
-
             racket.overall_rating = racket_new_rating
             racket.amount_of_votes = racket.amount_of_votes + 1
             racket.points = racket_new_rating * racket_new_rating * (racket.amount_of_votes + 1)
             racket.save()
+
+            updateRatingProp("Spin", racket.amount_of_votes-1, rating_comment.spin_rating, racket)
+            updateRatingProp("Maneuverability", racket.amount_of_votes-1, rating_comment.maneuverable_rating, racket)
+            updateRatingProp("Flexibility", racket.amount_of_votes-1, rating_comment.flexibility_rating, racket)
+            updateRatingProp("Comfort", racket.amount_of_votes-1, rating_comment.comfort_rating, racket)
+            updateRatingProp("Control", racket.amount_of_votes-1, rating_comment.control_rating, racket)
+            updateRatingProp("During Service", racket.amount_of_votes-1, rating_comment.serving_rating, racket)
+            updateRatingProp("During Volley", racket.amount_of_votes-1, rating_comment.volley_rating, racket)
+            updateRatingProp("Sweet Spot", racket.amount_of_votes-1, rating_comment.racket_sweet_spot_rating, racket)
+            updateRatingProp("Stability", racket.amount_of_votes-1, rating_comment.stable_rating, racket)
 
             return Response({"Result": "Success"}, status=status.HTTP_200_OK)
