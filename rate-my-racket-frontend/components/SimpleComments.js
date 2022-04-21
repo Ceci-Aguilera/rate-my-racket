@@ -2,7 +2,7 @@ import React from "react";
 
 import axios from "axios";
 
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 import styles from "../styles/SimpleComments.module.css";
 
@@ -10,11 +10,13 @@ import { useEffect, useState } from "react";
 
 import { ThumbsUpRegular, ThumbsDownRegular, MedalIcon, TennisRacketSimpleR, TennisCourtIcon, TennisBallIcon } from "./Icons"
 
-
+import { useAuth } from "../context/AuthContext"
 
 const domain = process.env.NEXT_PUBLIC_BACKEND_API_URL
 
 function SimpleComments() {
+
+    const { user } = useAuth()
 
     const [comments, setComments] = useState(null);
 
@@ -26,6 +28,17 @@ function SimpleComments() {
 
         FetchComments();
     }, [])
+
+    const onCreateVoting = async(e, comment_id, vote_type) => {
+        e.preventDefault();
+        const body = JSON.stringify({
+            vote_type,
+        })
+        const result = await createVoting(comment_id, user.user.id, body)
+        const temp_comments = await getComments();
+            setComments(temp_comments.comments);
+        
+    }
 
     return (comments == null)?<div></div>:(
         <div className={styles.simple_comments_div}>
@@ -48,14 +61,18 @@ function SimpleComments() {
                         </Card.Body>
                         <Card.Footer className={styles.simple_comments_card_footer}>
                             <div className={styles.simple_comments_up_votes}>
+                            <Button className={styles.simple_comments_button} onClick={(e) => onCreateVoting(e, comment.id, "UP_VOTE")}>
                                 <ThumbsUpRegular height={"25"} fill={"#38b6ff"} />
+                            </Button>
                                 <div className={styles.simple_comments_card_footer_votes_div}>
                                     {comment.amounts_of_up_votes}
                                 </div>
                             </div>
 
                             <div className={styles.simple_comments_down_votes}>
+                            <Button className={styles.simple_comments_button} onClick={(e) => onCreateVoting(e, comment.id, "DOWN_VOTE")}>
                                 <ThumbsDownRegular height={"25"} fill={"#aaaaaa"} />
+                            </Button>
                                 <div className={styles.simple_comments_card_footer_votes_div}>
                                     {comment.amounts_of_down_votes}
                                 </div>
@@ -101,6 +118,27 @@ const getComments = async() => {
         }
     })
 }
+
+const createVoting = async(comment_id, user_id, body) => {
+    const config = {
+        headers: {
+            "Content-Type": "application/json",
+        }
+    }
+
+    const comments_url = `${domain}/comments-rackets-app/create-vote/${comment_id}/${user_id}/`
+
+
+
+    return axios.post(comments_url, body, config).then(async (res) => {
+        return "Success"
+    }).catch((error) => {
+        return "Error"
+    })
+}
+
+
+
 
 const SelectedIcon = (icon_name, icon_color, profile_icon_color_mode) => {
 

@@ -108,7 +108,7 @@ class CreateCommentView(APIView):
 
         try:
             rating_comment = RatingComment.objects.get(userprofile=userprofile, racket=racket)
-            return Response({"Result": "User already have comment on this racket"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"Result": "User already has comment on this racket"}, status=status.HTTP_400_BAD_REQUEST)
 
         except:
             rating_comment = RatingCommentSerializer(data=data)
@@ -150,3 +150,40 @@ class LatestCommentsView(ListCreateAPIView):
     serializer_class = LatestRatesCommentsSerializer
     model = RatingComment
     queryset = RatingComment.objects.all().order_by('-pk')[:3]
+
+
+class CreateUpdateVote(APIView):
+
+    def post(self, request, comment_id, userprofile_id):
+
+        data = request.data
+
+        rating_comment = RatingComment.objects.get(id=comment_id)
+
+        user = User.objects.get(id=userprofile_id)
+        userprofile = user.userprofile
+
+        try:
+            vote_for_comment = RatingCommentVote.objects.get(userprofile=userprofile, rating_comment=rating_comment)
+            if vote_for_comment.vote_type != data['vote_type'] and vote_for_comment.vote_type != "NO VOTE" :
+                vote_for_comment.vote_type = data['vote_type']
+                vote_for_comment.save()
+                # Remove previous voting
+                if(data['vote_type'] == "UP_VOTE"):
+                    rating_comment.amounts_of_down_votes = rating_comment.amounts_of_down_votes - 1
+                else:
+                    rating_comment.amounts_of_up_votes = rating_comment.amounts_of_up_votes - 1
+                rating_comment.save()
+            elif (vote_for_comment.vote_type == data['vote_type']):
+                return Response({"Result": "User already has made this vote"}, status=status.HTTP_400_BAD_REQUEST)
+        except :
+            vote_for_comment = RatingCommentVote(userprofile=userprofile, rating_comment=rating_comment, vote_type=data['vote_type'])
+        vote_for_comment.save()
+
+        if(data['vote_type'] == "UP_VOTE"):
+            rating_comment.amounts_of_up_votes = rating_comment.amounts_of_up_votes + 1
+        else:
+            rating_comment.amounts_of_down_votes = rating_comment.amounts_of_down_votes + 1
+        rating_comment.save()
+
+        return Response({"Result": "Success"}, status=status.HTTP_200_OK)

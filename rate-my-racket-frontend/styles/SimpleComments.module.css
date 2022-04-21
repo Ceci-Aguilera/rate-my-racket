@@ -70,3 +70,9 @@
     text-align: center;
     line-height: 50px;
 }
+
+.simple_comments_button{
+    background-color: transparent !important;
+    border-color: transparent !important;
+    padding: 0;
+}

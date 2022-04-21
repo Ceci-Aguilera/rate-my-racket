@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^racket/(?P<racket_id>\d+)/$', RacketRetriveView.as_view(), name='racket-api'),
     url(r'^create-comment/(?P<racket_id>\d+)/(?P<userprofile_id>\d+)/$', CreateCommentView.as_view(), name='create-comment-api'),
     url(r'^latest-comments/$', LatestCommentsView.as_view(), name='latest-comments-api'),
+    url(r'^create-vote/(?P<comment_id>\d+)/(?P<userprofile_id>\d+)/$', CreateUpdateVote.as_view(), name='create-vote-api'),
 ]

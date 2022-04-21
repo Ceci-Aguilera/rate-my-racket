@@ -78,3 +78,11 @@ class OverallRacketRating(models.Model):
 
     def __str__(self):
         return self.racket.title + " - " + self.category.title
+
+
+
+class RatingCommentVote(models.Model):
+
+    userprofile = models.ForeignKey(UserProfile, null=True, on_delete=models.CASCADE)
+    rating_comment = models.ForeignKey(RatingComment, null=True, on_delete=models.CASCADE)
+    vote_type = models.CharField(max_length=50, default="NO VOTE")
