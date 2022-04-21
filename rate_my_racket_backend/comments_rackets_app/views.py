@@ -78,16 +78,17 @@ class RacketRetriveView(RetrieveAPIView):
 # ============================================================
 
 def updateRatingProp(overall_rating_name, amount_of_votes, new_rating, racket):
-    category = CategoryRating.objects.get(title=overall_rating_name)
-    try:
-        overall_rating_prop = OverallRacketRating.objects.get(category=category, racket=racket)
-    except:
-        overall_rating_prop = OverallRacketRating(category=category, racket=racket)
+    if(new_rating < 11):
+        category = CategoryRating.objects.get(title=overall_rating_name)
+        try:
+            overall_rating_prop = OverallRacketRating.objects.get(category=category, racket=racket)
+        except:
+            overall_rating_prop = OverallRacketRating(category=category, racket=racket)
+            overall_rating_prop.save()
+        
+        overall_rating_prop.rating = (overall_rating_prop.rating * amount_of_votes + new_rating) / (amount_of_votes + 1)
+        overall_rating_prop.points = overall_rating_prop.points + math.sqrt(new_rating)
         overall_rating_prop.save()
-    
-    overall_rating_prop.rating = (overall_rating_prop.rating * amount_of_votes + new_rating) / (amount_of_votes + 1)
-    overall_rating_prop.points = overall_rating_prop.points + math.sqrt(new_rating)
-    overall_rating_prop.save()
 
 
 
@@ -120,12 +121,14 @@ class CreateCommentView(APIView):
             rating_comment.racket = racket
             rating_comment.save()
 
-            racket_new_rating = ((racket.overall_rating * racket.amount_of_votes) + (rating_comment.overall_rating)) / (racket.amount_of_votes + 1)
+            if(rating_comment.overall_rating < 11):
 
-            racket.overall_rating = racket_new_rating
-            racket.amount_of_votes = racket.amount_of_votes + 1
-            racket.points = racket_new_rating * racket_new_rating * (racket.amount_of_votes + 1)
-            racket.save()
+                racket_new_rating = ((racket.overall_rating * racket.amount_of_votes) + (rating_comment.overall_rating)) / (racket.amount_of_votes + 1)
+
+                racket.overall_rating = racket_new_rating
+                racket.amount_of_votes = racket.amount_of_votes + 1
+                racket.points = racket_new_rating * racket_new_rating * (racket.amount_of_votes + 1)
+                racket.save()
 
             updateRatingProp("Spin", racket.amount_of_votes-1, rating_comment.spin_rating, racket)
             updateRatingProp("Maneuverability", racket.amount_of_votes-1, rating_comment.maneuverable_rating, racket)
@@ -138,3 +141,12 @@ class CreateCommentView(APIView):
             updateRatingProp("Stability", racket.amount_of_votes-1, rating_comment.stable_rating, racket)
 
             return Response({"Result": "Success"}, status=status.HTTP_200_OK)
+
+
+
+class LatestCommentsView(ListCreateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = LatestRatesCommentsSerializer
+    model = RatingComment
+    queryset = RatingComment.objects.all().order_by('-pk')[:3]

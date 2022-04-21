@@ -63,6 +63,9 @@ class RatingComment(models.Model):
     overall_rating = models.FloatField(default=0)
     audience = models.CharField(max_length=50, default="Beginner")
 
+    amounts_of_up_votes = models.IntegerField(default=0)
+    amounts_of_down_votes = models.IntegerField(default=0)
+
     def __str__(self):
         return self.userprofile.user.username + " " + self.racket.title
 

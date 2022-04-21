@@ -62,3 +62,24 @@ class UserCRUDSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('email',)
+
+
+class UserProfilePublicSerializer(serializers.ModelSerializer):
+
+    profile_icon = serializers.SerializerMethodField(source='get_profile_icon')
+    profile_icon_color = serializers.SerializerMethodField(source='get_profile_icon_color')
+    profile_icon_color_mode = serializers.SerializerMethodField(source='get_profile_icon_color_mode')
+
+    def get_profile_icon(self, obj):
+        return obj.userprofile.profile_icon
+    
+    def get_profile_icon_color(self, obj):
+        return obj.userprofile.profile_icon_color
+
+    def get_profile_icon_color_mode(self, obj):
+        return obj.userprofile.profile_icon_color_mode
+        
+
+    class Meta:
+        model = User
+        fields = ('username', 'id', "profile_icon", "profile_icon_color", "profile_icon_color_mode")

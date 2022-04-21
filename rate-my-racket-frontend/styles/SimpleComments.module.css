@@ -55,3 +55,18 @@
 .simple_comments_card_footer_votes_div{
     padding-left: 10px;
 }
+
+.account_icon_div{
+    width: 50px;
+    height: 50px;
+    margin-left: 0px;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.account_selected_icon{
+    margin-top: -5px;
+    text-align: center;
+    line-height: 50px;
+}
