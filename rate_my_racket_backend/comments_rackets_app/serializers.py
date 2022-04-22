@@ -62,6 +62,56 @@ class CategoryRatingSerializer(serializers.ModelSerializer):
             fields = "__all__"
 
 
+class OverallRacketRatingSimpleSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = OverallRacketRating
+            fields = ('points', )
+
+
+class CategoryRatingRacketsSerializer(serializers.ModelSerializer):
+
+    top_rackets = serializers.SerializerMethodField(source='get_top_rackets')
+    points =  serializers.SerializerMethodField(source='get_points')
+
+    def get_top_rackets(self, obj):
+        ratings = OverallRacketRating.objects.filter(category=obj).order_by("-points")[:3]
+        rackets = []
+        for rating in ratings:
+            rackets.append(rating.racket)
+        return RacketSerializer(rackets, context=self.context, many=True).data
+
+    def get_points(self, obj):
+        ratings = OverallRacketRating.objects.filter(category=obj).order_by("-points")[:3]
+        return OverallRacketRatingSimpleSerializer(ratings, many=True).data
+
+    class Meta:
+        model = CategoryRating
+        fields = ('id', 'title', 'top_rackets', 'points', )
+
+
+
+class CategoryRatingRacketsDetailSerializer(serializers.ModelSerializer):
+
+    all_rackets = serializers.SerializerMethodField(source='get_all_rackets')
+    points =  serializers.SerializerMethodField(source='get_points')
+
+    def get_all_rackets(self, obj):
+        ratings = OverallRacketRating.objects.filter(category=obj).order_by("-points")
+        rackets = []
+        for rating in ratings:
+            rackets.append(rating.racket)
+        return RacketSerializer(rackets, context=self.context, many=True).data
+
+    def get_points(self, obj):
+        ratings = OverallRacketRating.objects.filter(category=obj).order_by("-points")
+        return OverallRacketRatingSimpleSerializer(ratings, many=True).data
+
+    class Meta:
+        model = CategoryRating
+        fields = ('id', 'title', 'all_rackets', 'points', )
+
+
 class OverallRacketRatingSerializer(serializers.ModelSerializer):
 
         category = CategoryRatingSerializer(read_only=True)

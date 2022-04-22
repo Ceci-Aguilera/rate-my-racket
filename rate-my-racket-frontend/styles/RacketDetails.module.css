@@ -1,3 +1,7 @@
+.racket_details_card_header_title, .racket_details_card_header{
+    text-align: center;
+}
+
 .rate_racket_div, .rate_racket_row{
     width: 100%;
 }

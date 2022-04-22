@@ -8,7 +8,7 @@ import { Row, Col, Container, Card, Button } from "react-bootstrap";
 
 import { StarIcon, StarHalfIcon, UserIcon } from '../components/Icons';
 
-function TopRackets({ rackets }) {
+function TopRackets({ rackets, usePoints = false, points = [] }) {
 
     console.log(rackets)
 
@@ -27,7 +27,7 @@ function TopRackets({ rackets }) {
 
                                 <div className={`${styles.top_rackets_element_div_wrapper} ${styles.top_rackets_element_div_wrapper_silver}`}>
 
-                                <Link href={`/racket-details/${rackets[1].id}`}>
+                                    <Link href={`/racket-details/${rackets[1].id}`}>
                                         <div className={`${styles.top_rackets_element_div} ${styles.top_rackets_element_div_silver}`}>
                                             <div className={styles.top_racket_silver_img}>
                                                 <img src={rackets[1].image} alt="Silver Racket" className={`${styles.top_racket_img} ${styles.top_racket_silver_img}`} />
@@ -39,7 +39,11 @@ function TopRackets({ rackets }) {
 
 
                                     <div className={styles.top_stars_div}>
-                                        <span className={styles.top_rackets_points} style={{ color: "silver" }}>{rackets[1].points} Points</span>
+                                        {usePoints ?
+                                            <span className={styles.top_rackets_points} style={{ color: "silver" }}>{parseFloat(points[1].points).toFixed(2)} Points</span>
+                                            : <span className={styles.top_rackets_points} style={{ color: "silver" }}>{rackets[1].points} Points</span>
+
+                                        }
 
                                     </div>
 
@@ -80,9 +84,11 @@ function TopRackets({ rackets }) {
 
 
                                     <div className={styles.top_stars_div}>
+                                        {usePoints ?
+                                            <span className={styles.top_rackets_points} style={{ color: "goldenrod" }}>{parseFloat(points[0].points).toFixed(2)} Points</span>
+                                            : <span className={styles.top_rackets_points} style={{ color: "goldenrod" }}>{rackets[0].points} Points</span>
 
-                                        <span className={styles.top_rackets_points} style={{ color: "goldenrod" }}>{rackets[0].points} Points</span>
-
+                                        }
                                     </div>
 
 
@@ -117,7 +123,7 @@ function TopRackets({ rackets }) {
 
                                 <div className={`${styles.top_rackets_element_div_wrapper} ${styles.top_rackets_element_div_wrapper_bonze}`}>
 
-                                <Link href={`/racket-details/${rackets[2].id}`}>
+                                    <Link href={`/racket-details/${rackets[2].id}`}>
                                         <div className={`${styles.top_rackets_element_div} ${styles.top_rackets_element_div_bronze}`}>
                                             <img src={rackets[2].image} alt="Bronze Racket" className={`${styles.top_racket_img} ${styles.top_racket_bronze_img}`} />
                                         </div>
@@ -126,7 +132,11 @@ function TopRackets({ rackets }) {
 
                                     <div className={styles.top_stars_div}>
 
-                                        <span className={styles.top_rackets_points} style={{ color: "#cd7f32" }}>{rackets[2].points} Points</span>
+                                        {usePoints ?
+                                            <span className={styles.top_rackets_points} style={{ color: "#cd7f32" }}>{parseFloat(points[2].points).toFixed(2)} Points</span>
+                                            : <span className={styles.top_rackets_points} style={{ color: "#cd7f32" }}>{rackets[2].points} Points</span>
+
+                                        }
 
 
                                     </div>

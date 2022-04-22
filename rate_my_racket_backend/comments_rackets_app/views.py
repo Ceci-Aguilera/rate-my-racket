@@ -70,6 +70,13 @@ class RacketRetriveView(RetrieveAPIView):
     queryset = Racket.objects.all()
 
 
+class CategoriesListView(ListCreateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = CategoryRatingRacketsSerializer
+    model = CategoryRating
+    queryset = CategoryRating.objects.all()
+
 
 
 
@@ -200,3 +207,12 @@ class CreateUpdateVote(APIView):
         rating_comment.save()
 
         return Response({"Result": "Success"}, status=status.HTTP_200_OK)
+
+
+class CategoryRetrieveView(RetrieveAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = CategoryRatingRacketsDetailSerializer
+    model = CategoryRating
+    lookup_url_kwarg = 'category_id'
+    queryset = CategoryRating.objects.all()

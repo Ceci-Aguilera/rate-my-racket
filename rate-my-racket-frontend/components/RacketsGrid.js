@@ -8,7 +8,7 @@ import { Row, Col, Container, Card, Button } from "react-bootstrap";
 
 import { StarIcon, StarHalfIcon, UserIcon } from '../components/Icons';
 
-function RacketsGrid({ rackets }) {
+function RacketsGrid({ rackets, usePoints = false, points = [] }) {
 
     return (rackets == null) ? <div></div> : (
 
@@ -52,15 +52,20 @@ function RacketsGrid({ rackets }) {
                                                     );
                                                 })} */}
 
-                                                <span className={styles.racketsGrid_points_span}>
-                                                    {racket.points} Points
-                                                </span>
+                                                {usePoints ?
+                                                    <span className={styles.racketsGrid_points_span}>
+                                                        {parseFloat(points[index].points).toFixed(2)}
+                                                    </span> :
+                                                    <span className={styles.racketsGrid_points_span}>
+                                                        {racket.points} Points
+                                                    </span>
+                                                }
 
                                                 {/* <span className={styles.racketsGrid_amount_span}>( {racket.overall_rating} <StarIcon height="15" width="15" fill={"#38b6ff"} /> )</span> */}
 
                                             </div>
 
-                                            <p className={styles.racketsGrid_p}>{racket.title} <span className={styles.racketsGrid_amount_span}>( {racket.amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span></p> 
+                                            <p className={styles.racketsGrid_p}>{racket.title} <span className={styles.racketsGrid_amount_span}>( {racket.amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span></p>
                                         </div>
 
                                     </Card.Body>

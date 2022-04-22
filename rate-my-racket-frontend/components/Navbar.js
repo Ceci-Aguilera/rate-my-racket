@@ -35,7 +35,7 @@ function CustomNavbar() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className={`ms-auto navbar-nav ${styles.navbar_nav}`}>
 
-          <Link href="/">
+          <Link href="/categories">
             <a className={styles.navbar_link}>
               Categories
             </a>

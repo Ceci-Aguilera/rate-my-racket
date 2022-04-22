@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^create-comment/(?P<racket_id>\d+)/(?P<userprofile_id>\d+)/$', CreateCommentView.as_view(), name='create-comment-api'),
     url(r'^latest-comments/$', LatestCommentsView.as_view(), name='latest-comments-api'),
     url(r'^create-vote/(?P<comment_id>\d+)/(?P<userprofile_id>\d+)/$', CreateUpdateVote.as_view(), name='create-vote-api'),
+    url(r'^categories/$', CategoriesListView.as_view(), name='categories-api'),
+    url(r'^category-rackets/(?P<category_id>\d+)/$', CategoryRetrieveView.as_view(), name='category-rackets-api'),
 ]
