@@ -9,7 +9,7 @@ import { useAuth } from "../../context/AuthContext"
 import { useRouter } from 'next/router';
 import Link from "next/link";
 
-import { MedalIcon, TennisRacketSimpleR, TennisCourtIcon, TennisBallIcon, StarIcon, UserIcon } from "../../components/Icons"
+import { MedalIcon, TennisRacketSimpleR, TennisCourtIcon, TennisBallIcon, StarIcon, UserIcon, ThumbsUpRegular, ThumbsDownRegular } from "../../components/Icons"
 
 const domain = process.env.NEXT_PUBLIC_BACKEND_API_URL
 
@@ -74,6 +74,25 @@ const RacketDetails = ({ id }) => {
         return racket.ratings.filter(function (element) {
             return element.category.title == filter_par
         })[0]
+    }
+
+
+    const onCreateVoting = async (e, comment_id, vote_type) => {
+        e.preventDefault();
+        const body = JSON.stringify({
+            vote_type,
+        })
+        const result = await createVoting(comment_id, user.user.id, body)
+
+        async function FetchRacket() {
+            const temp_racket = await getRacket(id)
+            setRacket(temp_racket.racket)
+        }
+
+        if (id != null && user != null) {
+            FetchRacket()
+        }
+
     }
 
     return (racket == null) ? <div></div> : (
@@ -198,19 +217,49 @@ const RacketDetails = ({ id }) => {
                 </Col>
             </Row>
 
-            {/* <div className={styles.racket_details_all_comments_div}>
+            <div className={styles.racket_details_all_comments_div}>
+            <h2 className={styles.racket_details_all_comments_title}>
+                Comments
+            </h2>
                 {racket.comments.map((comment, index) => {
                     return (
-                        <div className={styles.racket_details_comments_div}>
+                        <div key={index} className={styles.racket_details_comments_div}>
                             <Card className={styles.racket_details_comments_card}>
                                 <Card.Header className={styles.racket_details_card_header}>
-                                    {comment.userprofile.username}
+                                    <div className={styles.simple_comments_card_header_avatar}>
+                                        {SelectedIcon(comment.userprofile.profile_icon, comment.userprofile.profile_icon_color, comment.userprofile.profile_icon_color_mode)}
+                                    </div>
+                                    <div className={styles.simple_comments_card_header_title}>{comment.userprofile.username}
+                                    </div>
                                 </Card.Header>
+                                <Card.Body className={styles.racket_details_comments_card_body}>
+                                    {comment.comments}
+                                </Card.Body>
+
+                                <Card.Footer className={styles.simple_comments_card_footer}>
+                                    <div className={styles.simple_comments_up_votes}>
+                                        <Button className={styles.simple_comments_button} onClick={(e) => onCreateVoting(e, comment.id, "UP_VOTE")}>
+                                            <ThumbsUpRegular height={"25"} fill={"#38b6ff"} />
+                                        </Button>
+                                        <div className={styles.simple_comments_card_footer_votes_div}>
+                                            {comment.amounts_of_up_votes}
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.simple_comments_down_votes}>
+                                        <Button className={styles.simple_comments_button} onClick={(e) => onCreateVoting(e, comment.id, "DOWN_VOTE")}>
+                                            <ThumbsDownRegular height={"25"} fill={"#aaaaaa"} />
+                                        </Button>
+                                        <div className={styles.simple_comments_card_footer_votes_div}>
+                                            {comment.amounts_of_down_votes}
+                                        </div>
+                                    </div>
+                                </Card.Footer>
                             </Card>
                         </div>
                     );
                 })}
-            </div> */}
+            </div>
         </div>
     );
 };
@@ -277,6 +326,27 @@ const getRacket = async (racket_id) => {
 }
 
 
+const createVoting = async (comment_id, user_id, body) => {
+    const config = {
+        headers: {
+            "Content-Type": "application/json",
+        }
+    }
+
+    const comments_url = `${domain}/comments-rackets-app/create-vote/${comment_id}/${user_id}/`
+
+
+
+    return axios.post(comments_url, body, config).then(async (res) => {
+        return "Success"
+    }).catch((error) => {
+        return "Error"
+    })
+}
+
+
+
+
 
 const SelectedIcon = (icon_name, icon_color, profile_icon_color_mode) => {
 
@@ -291,7 +361,7 @@ const SelectedIcon = (icon_name, icon_color, profile_icon_color_mode) => {
 
         return (
             <div className={styles.account_icon_div} style={{ backgroundColor: background_color, border: " 2px solid " + icon_color }} >
-                <MedalIcon className={`${styles.account_icon} ${styles.account_selected_icon}`} height={40} weight={40} fill={final_icon_color} />
+                <MedalIcon className={`${styles.account_icon} ${styles.account_selected_icon}`} height={30} weight={30} fill={final_icon_color} />
             </div>
         );
 
@@ -301,7 +371,7 @@ const SelectedIcon = (icon_name, icon_color, profile_icon_color_mode) => {
 
         return (
             <div className={styles.account_icon_div} style={{ backgroundColor: background_color, border: " 2px solid " + icon_color }} >
-                <TennisRacketSimpleR className={`${styles.account_icon} ${styles.account_selected_icon}`} height={40} weight={40} fill={final_icon_color} />
+                <TennisRacketSimpleR className={`${styles.account_icon} ${styles.account_selected_icon}`} height={30} weight={30} fill={final_icon_color} />
             </div>
         );
 
@@ -311,7 +381,7 @@ const SelectedIcon = (icon_name, icon_color, profile_icon_color_mode) => {
 
         return (
             <div className={styles.account_icon_div} style={{ backgroundColor: background_color, border: " 2px solid " + icon_color }} >
-                <TennisCourtIcon className={`${styles.account_icon} ${styles.account_selected_icon}`} height={30} weight={30} fill={final_icon_color} />
+                <TennisCourtIcon className={`${styles.account_icon} ${styles.account_selected_icon}`} height={20} weight={20} fill={final_icon_color} />
             </div>
         );
 
@@ -321,7 +391,7 @@ const SelectedIcon = (icon_name, icon_color, profile_icon_color_mode) => {
 
         return (
             <div className={styles.account_icon_div} style={{ backgroundColor: background_color, border: " 2px solid " + icon_color }} >
-                <TennisBallIcon className={`${styles.account_icon} ${styles.account_selected_icon}`} height={40} weight={40} fill={final_icon_color} />
+                <TennisBallIcon className={`${styles.account_icon} ${styles.account_selected_icon}`} height={30} weight={30} fill={final_icon_color} />
             </div>
         );
 
