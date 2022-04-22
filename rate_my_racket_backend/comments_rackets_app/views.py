@@ -64,7 +64,7 @@ class BrandRetriveView(RetrieveAPIView):
 class RacketRetriveView(RetrieveAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (AllowAny,)
-    serializer_class = RacketSerializer
+    serializer_class = RacketDetailsSerializer
     model = Racket
     lookup_url_kwarg = 'racket_id'
     queryset = Racket.objects.all()

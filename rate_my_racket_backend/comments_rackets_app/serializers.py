@@ -5,12 +5,13 @@ from .models import *
 from accounts_app.serializers import UserProfilePublicSerializer
 
 
-
 class RacketSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Racket
         fields = '__all__'
+
+
 
 class RacketSimpleSerializer(serializers.ModelSerializer):
 
@@ -46,6 +47,45 @@ class BrandAllRacketsSerializer(serializers.ModelSerializer):
         model = Brand
         fields = '__all__'
 
+
+class BrandSimpleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Brand
+        fields = ('title', 'id')
+
+
+class CategoryRatingSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = CategoryRating
+            fields = "__all__"
+
+
+class OverallRacketRatingSerializer(serializers.ModelSerializer):
+
+        category = CategoryRatingSerializer(read_only=True)
+
+        class Meta:
+            model = OverallRacketRating
+            exclude = ('racket', )
+
+
+class RacketDetailsSerializer(serializers.ModelSerializer):
+
+    brand = BrandSimpleSerializer(read_only=True)
+
+    ratings = serializers.SerializerMethodField(source='get_ratings')
+
+    def get_ratings(self, obj):
+        ratings = OverallRacketRating.objects.filter(racket=obj)
+        return OverallRacketRatingSerializer(ratings, many=True).data
+
+    class Meta:
+        model = Racket
+        fields = ('brand', 'image', 'title', 'secondary_image', 'head_size', 'length', 'weight_strung', 'weight_unstrung', 'composition', 'stiffness', 'average_cost', 'overall_rating',
+            'amount_of_votes', 'points', 'ratings',
+        )
 
 
 class RatingCommentSerializer(serializers.ModelSerializer):

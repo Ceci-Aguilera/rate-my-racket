@@ -1,0 +1,72 @@
+.rate_racket_div, .rate_racket_row{
+    width: 100%;
+}
+
+.rate_racket_img_div, .rate_racket_img{
+    width: 100%;
+    max-width:300px;
+    height:100%;
+    max-height:700px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align:center;
+}
+
+.rate_racket_img_div{
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.rate_racket_img{
+    transition: all 0.3s ease 0s;
+    width: 100%;
+}
+
+.rate_racket_img:hover{
+    transform: scale(1.25);
+}
+
+.racket_details_card{
+    width: 100%;
+    margin-top: 50px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.racket_details_card_header{
+    background-color: white;
+    text-align: center;
+}
+
+.racket_details_card_rate_p{
+    font-size: 1.2rem !important;
+    line-height: 30px !important;
+}
+
+.racket_details_card_rate_p_span{
+    font-weight: bold;
+}
+
+.racket_details_card_rate_p_star{
+    margin-left: 10px;
+}
+
+.racket_details_card_rate_row{
+    margin-top: 25px;
+}
+
+.racket_details_card_footer_button_div{
+    width: 100%;
+    margin-top: 25px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
+
+.racket_details_card_footer_button{
+    width: 200px;
+    background-color: #38b6ff;
+    border-color: #38b6ff;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
