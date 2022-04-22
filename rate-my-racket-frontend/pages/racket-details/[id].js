@@ -70,6 +70,12 @@ const RacketDetails = ({ id }) => {
 
 
 
+    const filterCategory = (filter_par) => {
+        return racket.ratings.filter(function (element) {
+            return element.category.title == filter_par
+        })[0]
+    }
+
     return (racket == null) ? <div></div> : (
         <div className={styles.rate_racket_div}>
 
@@ -123,7 +129,7 @@ const RacketDetails = ({ id }) => {
                                     <h2>Racket Rating</h2>
 
                                     {racket.ratings.map((rating, index) => {
-                                        return (
+                                        return (rating.category.title == "Beginner" || rating.category.title == "Intermediate" || rating.category.title == "Advance") ? <div></div> : (
                                             <Col key={index} xs={12} sm={12} md={12} lg={4} className={styles.racket_details_card_rate_col}>
                                                 <div className={styles.racket_details_card_rate_div}>
                                                     <p className={styles.racket_details_card_rate_p}>
@@ -134,6 +140,20 @@ const RacketDetails = ({ id }) => {
                                             </Col>
                                         );
                                     })}
+                                </Row>
+
+                                <Row className={styles.racket_details_card_rate_row}>
+
+
+                                    <Col xs={12} sm={12} md={12} lg={4} className={styles.racket_details_card_rate_col}>
+                                        <div className={styles.racket_details_card_rate_div}>
+                                            <p className={styles.racket_details_card_rate_p}>
+                                                <span className={styles.racket_details_card_rate_p_span}>Best for: </span>{
+                                                    calculateBestAudience(filterCategory("Beginner")?.points, filterCategory("Intermediate")?.points, filterCategory("Advance")?.points)
+                                                } Players
+                                            </p>
+                                        </div>
+                                    </Col>
                                 </Row>
 
                                 <Row className={styles.racket_details_card_rate_row}>
@@ -170,13 +190,27 @@ const RacketDetails = ({ id }) => {
                         </Card>
 
                         <div className={styles.racket_details_card_footer_button_div}>
-                            <Button variant="primary" className={styles.racket_details_card_footer_button}>
+                            <Button href={`/rate/${id}`} variant="primary" className={styles.racket_details_card_footer_button}>
                                 RATE
                             </Button>
                         </div>
                     </div>
                 </Col>
             </Row>
+
+            {/* <div className={styles.racket_details_all_comments_div}>
+                {racket.comments.map((comment, index) => {
+                    return (
+                        <div className={styles.racket_details_comments_div}>
+                            <Card className={styles.racket_details_comments_card}>
+                                <Card.Header className={styles.racket_details_card_header}>
+                                    {comment.userprofile.username}
+                                </Card.Header>
+                            </Card>
+                        </div>
+                    );
+                })}
+            </div> */}
         </div>
     );
 };
@@ -186,6 +220,38 @@ RacketDetails.getInitialProps = async ({ query }) => {
 
     return { id };
 };
+
+const calculateBestAudience = (beginner_audience, medium_audience, advance_audience) => {
+
+    var current_beginner = 0;
+    var current_medium = 0;
+    var current_advance = 0;
+
+    if (beginner_audience != null && beginner_audience != undefined) {
+        current_beginner = beginner_audience;
+    }
+
+    if (medium_audience != null && medium_audience != undefined) {
+        current_medium = medium_audience;
+    }
+
+    if (advance_audience != null && advance_audience != undefined) {
+        current_advance = advance_audience;
+    }
+
+    if (current_beginner + current_medium + current_advance < 1) {
+        return "---"
+    }
+    else if (Math.max(current_beginner, current_medium, current_advance) == current_beginner) {
+        return "Beginner";
+    }
+    else if (Math.max(current_beginner, current_medium, current_advance) == current_medium) {
+        return "Intermediate";
+    }
+
+    return "Advance";
+
+}
 
 const getRacket = async (racket_id) => {
     const config = {
@@ -200,7 +266,6 @@ const getRacket = async (racket_id) => {
 
     return axios.get(racket_url, config).then(async (res) => {
         const result = await res.data;
-        console.log(result)
         return {
             status: "RACKET_FOUND", racket: result
         }

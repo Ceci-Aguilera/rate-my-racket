@@ -46,7 +46,7 @@ const RateRacket = ({ id }) => {
             setRacket(temp_racket.racket)
         }
 
-        if (id != null && user != null) {
+        if (id != null && id != undefined && user != null) {
             FetchRacket()
         }
 
@@ -72,7 +72,7 @@ const RateRacket = ({ id }) => {
             comments
         });
 
-        const result = await createComment(racket.id, user.user.id, body);
+        const result = await createComment(id, user.user.id, body);
 
         if (result == "Success") {
             router.push('/')

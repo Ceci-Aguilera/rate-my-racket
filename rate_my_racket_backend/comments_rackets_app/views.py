@@ -140,6 +140,19 @@ class CreateCommentView(APIView):
             updateRatingProp("Sweet Spot", racket.amount_of_votes-1, rating_comment.racket_sweet_spot_rating, racket)
             updateRatingProp("Stability", racket.amount_of_votes-1, rating_comment.stable_rating, racket)
 
+            if data['audience'] != "Don't Know":
+
+                category = CategoryRating.objects.get(title=data['audience'])
+                try:
+                    overall_rating_prop = OverallRacketRating.objects.get(category=category, racket=racket)
+                except:
+                    overall_rating_prop = OverallRacketRating(category=category, racket=racket)
+                    overall_rating_prop.save()
+                
+                overall_rating_prop.rating = 0
+                overall_rating_prop.points = 1
+                overall_rating_prop.save()
+
             return Response({"Result": "Success"}, status=status.HTTP_200_OK)
 
 

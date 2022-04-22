@@ -71,28 +71,48 @@ class OverallRacketRatingSerializer(serializers.ModelSerializer):
             exclude = ('racket', )
 
 
+class RatingCommentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = RatingComment
+        exclude = ('userprofile', 'racket',)
+
+
+class RatesCommentsSimpleSerializer(serializers.ModelSerializer):
+
+    userprofile = serializers.SerializerMethodField(source='get_userprofile')
+    
+    def get_userprofile(self, obj):
+        userprofile = obj.userprofile.user
+        return UserProfilePublicSerializer(userprofile).data
+    
+    class Meta:
+        model = RatingComment
+        fields = ('userprofile', 'comments', 'id', 'amounts_of_up_votes', 'amounts_of_down_votes')
+
+
 class RacketDetailsSerializer(serializers.ModelSerializer):
 
     brand = BrandSimpleSerializer(read_only=True)
 
     ratings = serializers.SerializerMethodField(source='get_ratings')
 
+    comments = serializers.SerializerMethodField(source='get_comments')
+
     def get_ratings(self, obj):
         ratings = OverallRacketRating.objects.filter(racket=obj)
         return OverallRacketRatingSerializer(ratings, many=True).data
 
+    def get_comments(self, obj):
+        comments = RatingComment.objects.filter(racket=obj)
+        return RatesCommentsSimpleSerializer(comments, many=True).data
+
     class Meta:
         model = Racket
         fields = ('brand', 'image', 'title', 'secondary_image', 'head_size', 'length', 'weight_strung', 'weight_unstrung', 'composition', 'stiffness', 'average_cost', 'overall_rating',
-            'amount_of_votes', 'points', 'ratings',
+            'amount_of_votes', 'points', 'ratings', 'comments',
         )
 
-
-class RatingCommentSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = RatingComment
-        exclude = ('userprofile', 'racket',)
 
 
 class LatestRatesCommentsSerializer(serializers.ModelSerializer):
