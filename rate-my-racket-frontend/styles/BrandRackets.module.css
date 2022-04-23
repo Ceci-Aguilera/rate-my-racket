@@ -21,3 +21,22 @@
 .brand_img{
     margin-bottom: 20px;
 }
+
+.brand_rackets_select_top_button_div{
+    width: 80%;
+    margin-top: 25px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: end;
+}
+
+.brand_rackets_select_top_button{
+    height: 50px;
+    background-color: #38b6ff;
+    border-color: #38b6ff;
+    margin-bottom: -50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    line-height: 35px;
+}

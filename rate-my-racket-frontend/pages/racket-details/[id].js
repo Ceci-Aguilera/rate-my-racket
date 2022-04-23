@@ -224,7 +224,7 @@ const RacketDetails = ({ id }) => {
                 {racket.comments.map((comment, index) => {
                     return (
                         <div key={index} className={styles.racket_details_comments_div}>
-                            <Card className={styles.racket_details_comments_card}>
+                            {comment.comments?<Card className={styles.racket_details_comments_card}>
                                 <Card.Header className={styles.racket_details_card_header}>
                                     <div className={styles.simple_comments_card_header_avatar}>
                                         {SelectedIcon(comment.userprofile.profile_icon, comment.userprofile.profile_icon_color, comment.userprofile.profile_icon_color_mode)}
@@ -233,7 +233,7 @@ const RacketDetails = ({ id }) => {
                                     </div>
                                 </Card.Header>
                                 <Card.Body className={styles.racket_details_comments_card_body}>
-                                    {comment.comments}
+                                {comment.comments}
                                 </Card.Body>
 
                                 <Card.Footer className={styles.simple_comments_card_footer}>
@@ -255,7 +255,7 @@ const RacketDetails = ({ id }) => {
                                         </div>
                                     </div>
                                 </Card.Footer>
-                            </Card>
+                            </Card>:<div></div>}
                         </div>
                     );
                 })}

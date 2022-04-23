@@ -3,21 +3,57 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/RacketsGrid.module.css'
 
-import { Row, Col, Container, Card, Button } from "react-bootstrap";
+import { Row, Col, Container, Card, Button, Form } from "react-bootstrap";
+
+import {useEffect, useState} from "react"
 
 
 import { StarIcon, StarHalfIcon, UserIcon } from '../components/Icons';
 
 function RacketsGrid({ rackets, usePoints = false, points = [] }) {
 
+
+    const [searchTerm, setSearchTerm] = useState('')
+    const [racketsToDisplay, setRacketsToDisplay] = useState([])
+
+    useEffect(() => {
+        setRacketsToDisplay(rackets);
+    }, [rackets])
+
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        setRacketsToDisplay(rackets.filter((element) => {
+            if (searchTerm == "") {
+                return element;
+            }
+            else if (element.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+                return element;
+            }
+        }));
+    }
+
+
     return (rackets == null) ? <div></div> : (
 
 
         <div className={styles.racketsGrid_div}>
 
+            <Form className={`d-flex ${styles.racketsGrid_search_form}`} onSubmit={(e) => onSubmit(e)}>
+                <Form.Control
+                    type="search"
+                    placeholder="Search"
+                    className={`me-2 ${styles.racketsGrid_search_form_control}`}
+                    aria-label="Search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <Button variant="primary" className={styles.racketsGrid_search_button} type="submit">Search</Button>
+            </Form>
+
             <Row className={styles.racketsGrid_row}>
 
-                {rackets.map((racket, index) => {
+                {racketsToDisplay.map((racket, index) => {
                     return (
                         <Col key={index} xs={3} sm={3} md={3} lg={3} className={styles.racketsGrid_col}>
                             {racket == undefined ? <div></div> :
@@ -27,7 +63,7 @@ function RacketsGrid({ rackets, usePoints = false, points = [] }) {
 
                                         <div className={styles.racketsGrid_card_element_div_wrapper}>
 
-                                            <Link href="/#">
+                                            <Link href={`/racket-details/${racket.id}`}>
                                                 <div className={styles.racketsGrid_card_element_div}>
                                                     <div className={styles.racketsGrid_card_element_img_div}>
                                                         <img src={racket.image} alt="Silver Racket" className={styles.racketsGrid_card_element_img} />
@@ -65,7 +101,7 @@ function RacketsGrid({ rackets, usePoints = false, points = [] }) {
 
                                             </div>
 
-                                            <p className={styles.racketsGrid_p}>{racket.title} <span className={styles.racketsGrid_amount_span}>( {racket.amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span></p>
+                                            <p className={styles.racketsGrid_p}>{racket.brand.title} {racket.title} <span className={styles.racketsGrid_amount_span}>( {racket.amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span></p>
                                         </div>
 
                                     </Card.Body>

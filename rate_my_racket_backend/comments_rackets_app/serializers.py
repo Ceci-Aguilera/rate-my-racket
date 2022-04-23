@@ -5,7 +5,17 @@ from .models import *
 from accounts_app.serializers import UserProfilePublicSerializer
 
 
+
+class BrandSimpleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Brand
+        fields = ('title', 'id')
+
+
 class RacketSerializer(serializers.ModelSerializer):
+
+    brand = BrandSimpleSerializer(read_only=True)
 
     class Meta:
         model = Racket
@@ -46,13 +56,6 @@ class BrandAllRacketsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
         fields = '__all__'
-
-
-class BrandSimpleSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Brand
-        fields = ('title', 'id')
 
 
 class CategoryRatingSerializer(serializers.ModelSerializer):

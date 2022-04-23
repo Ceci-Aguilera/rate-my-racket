@@ -29,7 +29,14 @@ const CategoryRackets = ({ id }) => {
                 <h1 className={styles.brand_rackets_category_title}>{category.title}</h1>
             </div>
 
-            <RacketsGrid rackets={category.all_rackets} usePoints={true} points={category.points}/>
+
+            <div className={styles.brand_rackets_select_top_button_div}>
+                <Button variant="primary" className={styles.brand_rackets_select_top_button}>
+                    Select Top 3
+                </Button>
+            </div>
+
+            <RacketsGrid rackets={category.all_rackets} usePoints={true} points={category.points} />
         </div>
     );
 };
