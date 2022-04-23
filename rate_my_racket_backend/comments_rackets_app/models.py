@@ -86,3 +86,15 @@ class RatingCommentVote(models.Model):
     userprofile = models.ForeignKey(UserProfile, null=True, on_delete=models.CASCADE)
     rating_comment = models.ForeignKey(RatingComment, null=True, on_delete=models.CASCADE)
     vote_type = models.CharField(max_length=50, default="NO VOTE")
+
+
+class TopRacketCategory(models.Model):
+
+    userprofile = models.ForeignKey(UserProfile, null=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(CategoryRating, null=True, on_delete=models.CASCADE)
+    gold_racket = models.ForeignKey(Racket, related_name="gold_racket_set", null=True, on_delete=models.CASCADE)
+    silver_racket = models.ForeignKey(Racket, related_name="silver_racket_set", null=True, on_delete=models.CASCADE)
+    bronze_racket = models.ForeignKey(Racket, related_name="bronze_racket_set", null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.userprofile.user.username + " - " + self.category.title

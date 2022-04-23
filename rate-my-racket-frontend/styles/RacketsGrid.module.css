@@ -1,15 +1,20 @@
-.racketsGrid_div{
+.racketsGrid_div {
   margin-top: 50px;
 }
 
-.racketsGrid_div, .racketsGrid_row{
-    width: 100%;
-    max-width: 1500px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+.racketsGrid_div,
+.racketsGrid_row {
+  width: 100%;
+  max-width: 1500px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-.racketsGrid_card{
+.racketsGrid_search_div{
+  padding-top: 10px;
+}
+
+.racketsGrid_card {
   width: 100%;
   max-width: 300px;
   background-color: white;
@@ -22,24 +27,27 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.racketsGrid_card_element_div{
-    width: 100%;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center;
-    position: relative;
-    background-color: white;
+.racketsGrid_card_element_div {
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center;
+  position: relative;
+  background-color: white;
 }
 
-.racketsGrid_card_element_img_div, .racketsGrid_card_element_img{
-    height: 360px;
-    max-width: 180px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center;
+.racketsGrid_card_element_img_div,
+.racketsGrid_card_element_img {
+  background-color: white;
+  height: 360px;
+  max-width: 180px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center;
 }
 
 .racketsGrid_card_element_img {
+  background-color: white;
   opacity: 1;
   transition: opacity 1s !important;
   position: relative;
@@ -50,13 +58,15 @@
   text-align: center;
 }
 
-.racketsGrid_card_element_s_img_div{
+.racketsGrid_card_element_s_img_div {
+  background-color: white;
   margin-left: auto !important;
   margin-right: auto !important;
   text-align: center;
 }
 
-.racketsGrid_card_element_s_img{
+.racketsGrid_card_element_s_img {
+  background-color: white;
   opacity: 0;
   position: absolute;
   top: 0;
@@ -70,12 +80,10 @@
   transition: opacity 0.5s !important;
 }
 
-
 .racketsGrid_card_element_div:hover .racketsGrid_card_element_img {
   opacity: 0;
   transition: opacity 0.5s !important;
 }
-
 
 .racketsGrid_card_element_div:hover {
   cursor: pointer;
@@ -85,84 +93,86 @@
   width: 280px;
 }
 
-.racketsGrid_card_element_div:hover .racketsGrid_card_element_s_img{
+.racketsGrid_card_element_div:hover .racketsGrid_card_element_s_img {
   opacity: 1 !important;
   transition: opacity 0.5s !important;
 }
 
-.racketsGrid_card_element_div_wrapper{
-    display: flex;
-    flex-direction: column !important;
-    align-items: center;
-    height: 430px;
-    max-width: 320px;
+.racketsGrid_card_element_div_wrapper {
+  background-color: white;
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+  height: 430px;
+  max-width: 320px;
 }
 
 .racketsGrid_stars_div {
-    display: flex;
-    flex-flow: row;
-  }
-  
-  .racketsGrid_stars_div {
-    margin-top: 10px;
-  }
-  
-  .racketsGrid_p {
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
-  
-  .racketsGrid_amount_span {
-    color: #38b6ff;
-    margin-left: 5px;
-    font-weight: bold;
-    line-height: 40px;
-  }
+  display: flex;
+  flex-flow: row;
+}
 
-  .racketsGrid_card_footer{
-    width: 100%;
-    background-color: white;
-    border: 1px solid white !important;
-    border-radius: 50px !important;
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-  }
-  
-  .racketsGrid_card_footer_button_no_outline, .racketsGrid_card_footer_button_outline{
-    width: 100%;
-    max-width: 100px;
-    font-size: 1.1rem;
-  }
-  
-  .racketsGrid_card_footer_button_outline{
-    color: #38b6ff;
-    border-color: #38b6ff;
-    font-weight: bold;
-  }
-  
-  .racketsGrid_card_footer_button_no_outline{
-    background-color: #38b6ff;
-    border-color: #38b6ff;
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
+.racketsGrid_stars_div {
+  margin-top: 10px;
+}
 
-  .racketsGrid_points_span{
-    color: #38b6ff;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
+.racketsGrid_p {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
 
-  .racketsGrid_search_form{
-    width: 90%;
-    height: 50px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
+.racketsGrid_amount_span {
+  color: #38b6ff;
+  margin-left: 5px;
+  font-weight: bold;
+  line-height: 40px;
+}
 
-  .racketsGrid_search_button{
-    background-color: #38b6ff;
-    border-color: #38b6ff;
-    font-size: 1.2rem;
-  }
+.racketsGrid_card_footer {
+  width: 100%;
+  background-color: white;
+  border: 1px solid white !important;
+  border-radius: 50px !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.racketsGrid_card_footer_button_no_outline,
+.racketsGrid_card_footer_button_outline {
+  width: 100%;
+  max-width: 100px;
+  font-size: 1.1rem;
+}
+
+.racketsGrid_card_footer_button_outline {
+  color: #38b6ff;
+  border-color: #38b6ff;
+  font-weight: bold;
+}
+
+.racketsGrid_card_footer_button_no_outline {
+  background-color: #38b6ff;
+  border-color: #38b6ff;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.racketsGrid_points_span {
+  color: #38b6ff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.racketsGrid_search_form {
+  width: 90%;
+  height: 50px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.racketsGrid_search_button {
+  background-color: #38b6ff;
+  border-color: #38b6ff;
+  font-size: 1.2rem;
+}

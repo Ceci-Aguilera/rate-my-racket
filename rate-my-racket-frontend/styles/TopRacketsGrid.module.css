@@ -1,0 +1,167 @@
+.racketsGrid_div {
+    margin-top: 25px;
+  }
+  
+  .racketsGrid_div,
+  .racketsGrid_row {
+    width: 100%;
+    max-width: 1500px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .racketsGrid_search_div{
+    padding-top: 0px;
+  }
+  
+  .racketsGrid_card {
+    width: 100%;
+    max-width: 300px;
+    background-color: white;
+    margin-top: 50px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border: 1px solid #cbcaca;
+    border-radius: 20px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  
+  .racketsGrid_card_element_div {
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    position: relative;
+    background-color: white;
+  }
+  
+  .racketsGrid_card_element_img_div,
+  .racketsGrid_card_element_img {
+    background-color: white;
+    height: 360px;
+    max-width: 180px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+  
+  .racketsGrid_card_element_img {
+    background-color: white;
+    opacity: 1;
+    transition: opacity 1s !important;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+  
+  .racketsGrid_card_element_s_img_div {
+    background-color: white;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+  
+  .racketsGrid_card_element_s_img {
+    background-color: white;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300px;
+    max-width: 280px;
+    margin-top: 50px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    transition: opacity 0.5s !important;
+  }
+  
+  .racketsGrid_card_element_div:hover .racketsGrid_card_element_img {
+    opacity: 0;
+    transition: opacity 0.5s !important;
+  }
+  
+  .racketsGrid_card_element_div:hover {
+    cursor: pointer;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    width: 280px;
+  }
+  
+  .racketsGrid_card_element_div:hover .racketsGrid_card_element_s_img {
+    opacity: 1 !important;
+    transition: opacity 0.5s !important;
+  }
+  
+  .racketsGrid_card_element_div_wrapper {
+    background-color: white;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    height: 380px;
+    max-width: 320px;
+  }
+  
+  .racketsGrid_stars_div {
+    display: flex;
+    flex-flow: row;
+  }
+  
+  .racketsGrid_stars_div {
+    margin-top: 10px;
+  }
+  
+  .racketsGrid_p {
+    margin-top: 10px;;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  
+  .racketsGrid_card_footer {
+    width: 100%;
+    background-color: white;
+    border: 1px solid white !important;
+    border-radius: 50px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .racketsGrid_card_footer_button_no_outline {
+    width: 200px;
+    font-size: 1.1rem;
+  }
+  
+  
+  .racketsGrid_card_footer_button_no_outline {
+    background-color: #38b6ff;
+    border-color: #38b6ff;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .racketsGrid_points_span {
+    color: #38b6ff;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .racketsGrid_search_form {
+    width: 90%;
+    height: 50px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .racketsGrid_search_button {
+    background-color: #38b6ff;
+    border-color: #38b6ff;
+    font-size: 1.2rem;
+  }
+  

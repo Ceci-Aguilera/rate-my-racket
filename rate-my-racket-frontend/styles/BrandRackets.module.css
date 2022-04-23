@@ -40,3 +40,27 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     line-height: 35px;
 }
+
+
+.top_rackets_div{
+    width: 80%;
+    margin-top: 20px;
+    margin-left: auto !important;
+    margin-right:auto !important;
+}
+
+.top_rackets_p{
+    font-size: 1.2rem;
+}
+
+.top_rackets_p_span{
+    color: #38b6ff;
+    font-weight: bold;
+}
+
+.top_rackets_row{
+    width: 100%;
+    max-width: 1500px;
+    margin-left: auto !important;
+    margin-right:auto !important;
+}

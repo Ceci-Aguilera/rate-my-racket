@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from '../styles/RacketsGrid.module.css'
+import styles from '../styles/TopRacketsGrid.module.css'
 
-import { Row, Col, Container, Card, Button, Form } from "react-bootstrap";
+import { Row, Col, Card, Button, Form, Dropdown } from "react-bootstrap";
 
 import { useEffect, useState } from "react"
 
 
 import { StarIcon, StarHalfIcon, UserIcon } from '../components/Icons';
 
-function RacketsGrid({ rackets, usePoints = false, points = [] }) {
+function TopRacketsGrid({ rackets, onChangeGoldRacket, onChangeSilverRacket, onChangeBronzeRacket }) {
 
 
     const [searchTerm, setSearchTerm] = useState('')
@@ -31,6 +31,21 @@ function RacketsGrid({ rackets, usePoints = false, points = [] }) {
                 return element;
             }
         }));
+    }
+
+    const onChangeGoldRacketHelper = async(e, racket) => {
+        e.preventDefault();
+        await onChangeGoldRacket(racket.id, racket.brand.title + " " + racket.title)
+    }
+    
+    const onChangeSilverRacketHelper = async(e, racket) => {
+        e.preventDefault();
+        await onChangeSilverRacket(racket.id, racket.brand.title + " " + racket.title)
+    }
+
+    const onChangeBronzeRacketHelper = async(e, racket) => {
+        e.preventDefault();
+        await onChangeBronzeRacket(racket.id, racket.brand.title + " " + racket.title)
     }
 
 
@@ -79,43 +94,24 @@ function RacketsGrid({ rackets, usePoints = false, points = [] }) {
 
 
 
-
-                                            <div className={styles.racketsGrid_stars_div}>
-
-                                                {/* {calculateRating(racket.overall_rating, "#38b6ff").map((top_star, index) => {
-                                                    return (
-                                                        <div key={index} className={styles.racketsGrid_stars_div}>
-                                                            {top_star}
-                                                        </div>
-                                                    );
-                                                })} */}
-
-                                                {usePoints ?
-                                                    <span className={styles.racketsGrid_points_span}>
-                                                        {parseFloat(points[index].points).toFixed(2)}
-                                                    </span> :
-                                                    <span className={styles.racketsGrid_points_span}>
-                                                        {racket.points} Points
-                                                    </span>
-                                                }
-
-                                                {/* <span className={styles.racketsGrid_amount_span}>( {racket.overall_rating} <StarIcon height="15" width="15" fill={"#38b6ff"} /> )</span> */}
-
-                                            </div>
-
-                                            <p className={styles.racketsGrid_p}>{racket.brand.title} {racket.title} <span className={styles.racketsGrid_amount_span}>( {racket.amount_of_votes} <UserIcon height="15" width="15" fill={"#38b6ff"} /> )</span></p>
+                                            <p className={styles.racketsGrid_p}>{racket.brand.title} {racket.title}s</p>
                                         </div>
 
                                     </Card.Body>
 
                                     <Card.Footer className={styles.racketsGrid_card_footer}>
-                                        <Button variant="outline-primary" className={styles.racketsGrid_card_footer_button_outline}>
-                                            Details
-                                        </Button>
 
-                                        <Button href={`/rate/${racket.id}`} variant="primary" className={styles.racketsGrid_card_footer_button_no_outline}>
-                                            Rate
-                                        </Button>
+                                        <Dropdown>
+                                            <Dropdown.Toggle variant="primary" className={styles.racketsGrid_card_footer_button_no_outline}>
+                                                Select As
+                                            </Dropdown.Toggle>
+
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item onClick={(e) => onChangeGoldRacketHelper(e, racket)}>Top 1st Choice</Dropdown.Item>
+                                                <Dropdown.Item onClick={(e) => onChangeSilverRacketHelper(e, racket)}>Top 2nd Choice</Dropdown.Item>
+                                                <Dropdown.Item onClick={(e) => onChangeBronzeRacketHelper(e, racket)}>Top 3rd Choice</Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
                                     </Card.Footer>
                                 </Card>
 
@@ -151,4 +147,4 @@ const calculateRating = (rate, color) => {
 
 }
 
-export default RacketsGrid;
+export default TopRacketsGrid;

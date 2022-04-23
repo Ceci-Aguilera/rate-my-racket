@@ -31,7 +31,7 @@ const CategoryRackets = ({ id }) => {
 
 
             <div className={styles.brand_rackets_select_top_button_div}>
-                <Button variant="primary" className={styles.brand_rackets_select_top_button}>
+                <Button href={`/top-rackets-category/${category.id}`} variant="primary" className={styles.brand_rackets_select_top_button}>
                     Select Top 3
                 </Button>
             </div>
