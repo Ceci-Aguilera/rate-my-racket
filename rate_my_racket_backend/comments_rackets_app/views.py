@@ -40,7 +40,7 @@ class RacketListView(ListCreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RacketSerializer
     model = Racket
-    queryset = Racket.objects.all()
+    queryset = Racket.objects.all().order_by("-points")
 
 
 class TopPrincipalRatedView(ListCreateAPIView):

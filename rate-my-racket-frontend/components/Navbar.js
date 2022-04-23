@@ -49,9 +49,9 @@ function CustomNavbar() {
 
 
 
-          <Link href="/">
+          <Link href="/rackets">
             <a className={styles.navbar_link}>
-              Rate
+              Rackets
             </a>
           </Link>
 
