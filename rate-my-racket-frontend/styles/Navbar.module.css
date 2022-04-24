@@ -36,3 +36,21 @@
 .navbar_link:hover:after {
   transform: scaleX(1);
 }
+
+@media screen and (max-width:578px){
+  .navbar {
+    background-color: #38b6ff !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: #38b6ff;
+    background-image: none !important;
+  }
+
+  .navbar_brand {
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 70px;
+    width: 250px;
+  }
+  
+
+}

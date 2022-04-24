@@ -99,3 +99,59 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   line-height: 35px;
 }
+
+@media screen and (max-width:578px){
+
+  .index_div_wrapper{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+  
+  .index_row{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+
+  .index_categories_div{
+    width: 100%;
+    margin-top: 50px;
+  }
+  
+  .index_categories_list_div{
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  .index_categories_title_div{
+    height: 100px;
+  }
+  
+  .index_categories_title{
+    font-size: 3.0rem;
+    line-height: 100px;
+  }
+
+  .index_categories_element_button_div{
+    width: 90%;
+    margin-top: 30px;
+    column-gap: 25px;
+  }
+
+  .index_categories_element_button{
+    width: 150px;
+    margin-bottom: 50px;
+  }
+
+  .brand_rackets_select_top_button{
+    width: 150px;
+  }
+
+  
+.categories_div{
+  margin-top: 50px;
+}
+
+
+}

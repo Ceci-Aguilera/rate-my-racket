@@ -38,7 +38,7 @@ export default function FAQS() {
             </li>
 
             <li>
-              <Link href="/faqs/#how-to-rate">
+              <Link href="/faqs/#stars-vs-points">
                 <a className={styles.faqs_link}>
                   Stars vs Points
                 </a>
@@ -46,7 +46,7 @@ export default function FAQS() {
             </li>
 
             <li>
-              <Link href="/faqs/#how-to-rate">
+              <Link href="/faqs/#comments-suggestions-rackets">
                 <a className={styles.faqs_link}>
                   Comments, Suggestions, and Ask to include a Racket
                 </a>
@@ -118,7 +118,7 @@ export default function FAQS() {
 
 
 
-          <div className={styles.how_to_rate_element_div} id="how-to-rate">
+          <div className={styles.how_to_rate_element_div} id="stars-vs-points">
 
             <h2 className={styles.how_to_rate_title_section}>Stars vs Points</h2>
 
@@ -150,7 +150,7 @@ export default function FAQS() {
           </div>
 
 
-          <div className={styles.how_to_rate_element_div} id="how-to-rate">
+          <div className={styles.how_to_rate_element_div} id="comments-suggestions-rackets">
 
             <h2 className={styles.how_to_rate_title_section}>Comments, Suggestions, and Ask to include a Racket</h2>
 

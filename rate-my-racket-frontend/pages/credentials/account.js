@@ -68,11 +68,11 @@ export default function Account() {
 
                     <Row className={styles.account_row}>
 
-                        <Col xs={2} sm={2} md={2} lg={2}>
+                        <Col xs={12} sm={12} md={12} lg={2}>
                             <Sidebar />
                         </Col>
 
-                        <Col xs={10} sm={10} md={10} lg={10}>
+                        <Col xs={12} sm={12} md={12} lg={10}>
                         <Card className={styles.account_card}>
                         <Card.Header className={styles.account_card_header}>
                             <h1 className={styles.account_card_header_title}>

@@ -19,7 +19,7 @@ function TopRackets({ rackets, usePoints = false, points = [] }) {
 
             <Row className={styles.top_rackets_row}>
 
-                <Col xs={4} sm={4} md={4} lg={4} className={styles.top_rackets_col}>
+                <Col xs={12} sm={12} md={12} lg={4} className={styles.top_rackets_col}>
                     {rackets[1] == undefined ? <div></div> :
                         <Card className={`${styles.top_racket_card} ${styles.top_racket_card_silver}`}>
 
@@ -68,7 +68,7 @@ function TopRackets({ rackets, usePoints = false, points = [] }) {
                     }
                 </Col>
 
-                <Col xs={4} sm={4} md={4} lg={4} className={styles.top_rackets_col}>
+                <Col xs={12} sm={12} md={12} lg={4} className={styles.top_rackets_col}>
                     {rackets[0] == undefined ? <div></div> :
                         <Card className={`${styles.top_racket_card} ${styles.top_racket_card_gold}`}>
 
@@ -114,7 +114,7 @@ function TopRackets({ rackets, usePoints = false, points = [] }) {
                     }
                 </Col>
 
-                <Col xs={4} sm={4} md={4} lg={4} className={styles.top_rackets_col}>
+                <Col xs={12} sm={12} md={12} lg={4} className={styles.top_rackets_col}>
                     {rackets[2] == undefined ? <div></div> :
                         <Card className={`${styles.top_racket_card} ${styles.top_racket_card_bronze}`}>
 

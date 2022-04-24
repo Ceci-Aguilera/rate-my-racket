@@ -71,3 +71,26 @@
     font-size: 1.1rem;
     font-weight: bold;
 }
+
+@media screen and (max-width:578px){
+
+    .footer{
+        width: 100%;
+        height: 600px;
+        background-color: #38b6ff;
+        background-image: linear-gradient(315deg, #348ec1 0%, #38b6ff 64%);
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    .footer_links_div{
+        width: 100%;
+        padding-top: 50px !important;
+        margin-left: auto;
+        margin-right: auto;
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+    }
+
+}

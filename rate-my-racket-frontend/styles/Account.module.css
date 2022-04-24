@@ -105,3 +105,40 @@
 .account_row{
     width: 100%;
 }
+
+@media screen and (max-width:578px){
+
+    .account_div_wrapper{
+        width: 100%;
+        height: 100% !important;
+        min-height: 100vh;
+    }
+
+    .account_row{
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center;
+    }
+
+    .account_card{
+        width: 90%;
+        max-width: 400px;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .account_update_icon_button_div{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto !important;
+        padding-right: 0px !important;
+        text-align: center;
+    }
+    
+    .account_update_icon_button{
+        width: 80%;
+        margin-top: 25px;
+        font-size: 1.2rem;
+    }
+    
+}

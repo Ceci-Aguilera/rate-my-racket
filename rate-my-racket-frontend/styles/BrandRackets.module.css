@@ -70,3 +70,17 @@
     font-size: 1.2rem;
     text-align: center;
   }
+
+
+  
+@media screen and (max-width:578px){
+    .brand_img_div, .brand_img{
+        width: 100%;
+        max-width: 300px;
+        height: 100%;
+        max-height: 300px;
+        margin-left:auto !important;
+        margin-right:auto !important;
+        text-align: center;
+    }
+}

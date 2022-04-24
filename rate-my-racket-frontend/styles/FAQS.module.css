@@ -45,7 +45,6 @@
 }
 
 .how_to_rate_table_title{
-    margin-top: 50px;
     width: 100%;
     max-width: 1000px;
     margin-top: 50px;
@@ -64,4 +63,41 @@
 
 .how_to_rate_element_wrapper_div{
     margin-top: 25px;
+}
+
+@media screen and (max-width:578px){
+
+    .how_to_rate_table_title{
+        width: 100%;
+        max-width: 300px;
+        margin-top: 50px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .faqs_table{
+        width: 90%;
+        max-width: 300px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 50px;
+    }
+
+    .how_to_rate_element_div{
+        width: 90%;
+        max-width: 300px;
+        margin-top: 50px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: justify;
+    }
+
+    .how_to_rate_title_section{
+        width: 100%;
+        max-width: 300px;
+        margin-top: 50px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center;
+    }
 }

@@ -57,7 +57,7 @@ function RacketsGrid({ rackets, usePoints = false, points = [] }) {
 
                 {racketsToDisplay.map((racket, index) => {
                     return (
-                        <Col key={index} xs={3} sm={3} md={3} lg={3} className={styles.racketsGrid_col}>
+                        <Col key={index} xs={12} sm={12} md={12} lg={3} className={styles.racketsGrid_col}>
                             {racket == undefined ? <div></div> :
                                 <Card className={styles.racketsGrid_card}>
 

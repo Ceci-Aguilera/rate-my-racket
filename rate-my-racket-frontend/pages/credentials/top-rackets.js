@@ -58,11 +58,11 @@ export default function AccountTopRackets() {
 
                     <Row className={styles.account_row}>
 
-                        <Col xs={2} sm={2} md={2} lg={2}>
+                        <Col xs={12} sm={12} md={12} lg={2}>
                             <Sidebar />
                         </Col>
 
-                        <Col xs={10} sm={10} md={10} lg={10}>
+                        <Col xs={12} sm={12} md={12} lg={10}>
                             <h1 className={styles.account_ratings_title}>
                                 Top Rackets
                             </h1>
@@ -80,7 +80,7 @@ export default function AccountTopRackets() {
                                             <Row className={styles.account_rating_rackets_row}>
 
 
-                                                <Col xs={4} sm={4} md={4} lg={4} className={styles.account_rating_rackets_col}>
+                                                <Col xs={12} sm={12} md={12} lg={4} className={styles.account_rating_rackets_col}>
                                                     <div className={styles.rating_rackets_element_div}>
                                                         <div className={styles.rating_rackets_img_div}>
                                                             <img src={cat.silver_racket.image} className={styles.rating_rackets_img} alt="Rated Racket" />
@@ -94,7 +94,7 @@ export default function AccountTopRackets() {
                                                     </div>
                                                 </Col>
 
-                                                <Col xs={4} sm={4} md={4} lg={4} className={styles.account_rating_rackets_col}>
+                                                <Col xs={12} sm={12} md={12}  lg={4} className={styles.account_rating_rackets_col}>
                                                     <div className={styles.rating_rackets_element_div}>
                                                         <div className={styles.rating_rackets_img_div}>
                                                             <img src={cat.gold_racket.image} className={styles.rating_rackets_img} alt="Rated Racket" />
@@ -108,7 +108,7 @@ export default function AccountTopRackets() {
                                                     </div>
                                                 </Col>
 
-                                                <Col xs={4} sm={4} md={4} lg={4} className={styles.account_rating_rackets_col}>
+                                                <Col xs={12} sm={12} md={12} lg={4} className={styles.account_rating_rackets_col}>
                                                     <div className={styles.rating_rackets_element_div}>
                                                         <div className={styles.rating_rackets_img_div}>
                                                             <img src={cat.bronze_racket.image} className={styles.rating_rackets_img} alt="Rated Racket" />

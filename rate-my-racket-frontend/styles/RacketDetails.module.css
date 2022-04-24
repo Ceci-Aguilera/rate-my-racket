@@ -162,3 +162,36 @@
   margin-top: 10px;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width:578px){
+
+  .rate_racket_img_div,
+  .rate_racket_img {
+    width: 100%;
+    max-width: 200px;
+    height: 100%;
+    max-height: 500px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+
+  .rate_racket_row{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+
+  .rate_racket_col{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+
+  .rate_racket_form{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+
+}

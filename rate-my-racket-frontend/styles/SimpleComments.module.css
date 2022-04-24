@@ -76,3 +76,13 @@
     border-color: transparent !important;
     padding: 0;
 }
+
+
+@media screen and (max-width:578px){
+    .simple_comments_div, .simple_comments_card{
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center;
+    }
+    
+  }

@@ -41,3 +41,20 @@
 .brands_button_icon{
     margin-left: 15px;
 }
+
+@media screen and (max-width:578px){
+    .brand_img_div, .brand_img{
+        width: 100%;
+        max-width: 300px;
+        height: 100%;
+        max-height: 300px;
+        margin-left:auto !important;
+        margin-right:auto !important;
+        text-align: center;
+    }
+
+    .brands_button{
+        margin-bottom: 25px;
+    }
+
+}
