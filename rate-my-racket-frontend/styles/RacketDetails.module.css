@@ -97,6 +97,8 @@
 }
 
 .racket_details_card_header{
+    background-color:#38b6ff;
+    color: white;
     display: flex;
     flex-direction: row;
     line-height: 50px;

@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 
 import { MedalIcon, TennisRacketSimpleR, TennisCourtIcon, TennisBallIcon } from "../../components/Icons"
 import EditAccountInfoModal from '../../components/EditAccountInfoModal'
+import Sidebar from '../../components/Sidebar'
 
 export default function Account() {
 
@@ -38,7 +39,7 @@ export default function Account() {
         }
     }, [user])
 
-    const onUpdateIcon = async(e) => {
+    const onUpdateIcon = async (e) => {
         e.preventDefault();
         const body = JSON.stringify({
             profile_icon: selected_icon,
@@ -49,9 +50,9 @@ export default function Account() {
         const result = await update_userprofile(user.user.id, body)
     }
 
-    const onUpdateInfo = async(body) => {
+    const onUpdateInfo = async (body) => {
         const result = await update_userInfo(user.user.id, body)
-        window. location. reload()
+        window.location.reload()
     }
 
     return (user == null) ? <div></div> : (
@@ -65,7 +66,14 @@ export default function Account() {
             <main className={styles.main}>
                 <div className={styles.account_div_wrapper}>
 
-                    <Card className={styles.account_card}>
+                    <Row className={styles.account_row}>
+
+                        <Col xs={2} sm={2} md={2} lg={2}>
+                            <Sidebar />
+                        </Col>
+
+                        <Col xs={10} sm={10} md={10} lg={10}>
+                        <Card className={styles.account_card}>
                         <Card.Header className={styles.account_card_header}>
                             <h1 className={styles.account_card_header_title}>
                                 Account Information
@@ -153,14 +161,14 @@ export default function Account() {
                                         />
                                     </div>
 
-                                   
+
 
                                 </Col>
                             </Row>
 
                             <Row className={styles.account_card_row}>
-                            <Col xs={12} sm={12} md={12} lg={6} className={styles.account_card_col}>
-                                <div className={styles.account_update_icon_button_div}>
+                                <Col xs={12} sm={12} md={12} lg={6} className={styles.account_card_col}>
+                                    <div className={styles.account_update_icon_button_div}>
                                         <Button className={styles.account_update_icon_button} onClick={(e) => handleShow()}>
                                             Edit Info
                                         </Button>
@@ -168,15 +176,18 @@ export default function Account() {
                                 </Col>
 
                                 <Col xs={12} sm={12} md={12} lg={6} className={styles.account_card_col}>
-                                <div className={styles.account_update_icon_button_div}>
-                                        <Button className={styles.account_update_icon_button} onClick = {(e) => onUpdateIcon(e)}>
+                                    <div className={styles.account_update_icon_button_div}>
+                                        <Button className={styles.account_update_icon_button} onClick={(e) => onUpdateIcon(e)}>
                                             Update Icon
                                         </Button>
                                     </div>
                                 </Col>
-                                </Row>
+                            </Row>
                         </Card.Body>
                     </Card>
+                        </Col>
+
+                    </Row>
 
                 </div>
 

@@ -180,3 +180,15 @@ class LatestRatesCommentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = RatingComment
         fields = ('userprofile', 'racket', 'comments', 'id', 'amounts_of_up_votes', 'amounts_of_down_votes')
+
+
+class TopRacketCategorySerializer(serializers.ModelSerializer):
+
+    category = CategoryRatingSerializer(read_only=True)
+    gold_racket = RacketSerializer(read_only=True)
+    silver_racket = RacketSerializer(read_only=True)
+    bronze_racket = RacketSerializer(read_only=True)
+
+    class Meta:
+        model = TopRacketCategory
+        fields = ('gold_racket', 'silver_racket', 'bronze_racket', 'category')

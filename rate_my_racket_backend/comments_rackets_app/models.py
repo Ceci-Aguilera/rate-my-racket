@@ -48,7 +48,7 @@ class CategoryRating(models.Model):
 class RatingComment(models.Model):
 
     userprofile = models.ForeignKey(UserProfile, null=True, on_delete=models.CASCADE)
-    racket = models.ForeignKey(Racket, null=True, on_delete=models.CASCADE)
+    racket = models.ForeignKey(Racket, null=True, on_delete=models.CASCADE, related_name='rating_comment')
     comments = models.TextField(blank=True)
     spin_rating = models.FloatField(default=6)
     maneuverable_rating = models.FloatField(default=6)

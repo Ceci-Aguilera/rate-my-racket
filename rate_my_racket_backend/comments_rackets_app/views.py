@@ -288,3 +288,34 @@ class TopRacketsCategoryCreateView(APIView):
             updateTopRatingProp(category, 8, bronze_racket)
 
             return Response({"Result": "Success"}, status=status.HTTP_200_OK)
+
+
+
+
+
+class RacketUserListView(ListCreateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = RacketSerializer
+    model = Racket
+
+    def get_queryset(self):
+        userprofile_id = self.kwargs.get("userprofile_id")
+        user = User.objects.get(id=userprofile_id)
+        userprofile = user.userprofile
+        rackets = Racket.objects.filter(rating_comment__userprofile=userprofile)
+        return rackets
+
+
+class TopRacketUserListView(ListCreateAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (AllowAny,)
+    serializer_class = TopRacketCategorySerializer
+    model = TopRacketCategory
+
+    def get_queryset(self):
+        userprofile_id = self.kwargs.get("userprofile_id")
+        user = User.objects.get(id=userprofile_id)
+        userprofile = user.userprofile
+        top_racket_category = TopRacketCategory.objects.filter(userprofile=userprofile)
+        return top_racket_category

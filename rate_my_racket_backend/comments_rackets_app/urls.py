@@ -16,4 +16,6 @@ urlpatterns = [
     url(r'^category-rackets/(?P<category_id>\d+)/$', CategoryRetrieveView.as_view(), name='category-rackets-api'),
     url(r'^rackets/$', RacketListView.as_view(), name='rackets-list-api'),
     url(r'^rate-top_rackets/(?P<category_id>\d+)/(?P<userprofile_id>\d+)/$', TopRacketsCategoryCreateView.as_view(), name='rate-top-rackets-api'),
+    url(r'^user-rated-rackets/(?P<userprofile_id>\d+)/$', RacketUserListView.as_view(), name='user-rated-rackets-api'),
+    url(r'^top-rackets-category/(?P<userprofile_id>\d+)/$', TopRacketUserListView.as_view(), name='top-rackets-category-api'),
 ]

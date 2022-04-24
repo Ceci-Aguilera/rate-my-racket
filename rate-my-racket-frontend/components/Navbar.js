@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link"
 
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, DropdownButton, Dropdown } from "react-bootstrap";
 
 import styles from "../styles/Navbar.module.css";
 
@@ -36,9 +36,23 @@ function CustomNavbar() {
         <Nav className={`ms-auto navbar-nav ${styles.navbar_nav}`}>
 
           <Link href="/categories">
-            <a className={styles.navbar_link}>
+            {/* <a className={styles.navbar_link}>
               Categories
-            </a>
+            </a> */}
+
+            <DropdownButton
+              variant={"primary"}
+              title={"Categories"}
+              className={styles.navbar_link}
+            >
+              <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+              <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+              <Dropdown.Item eventKey="3" active>
+                Active Item
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+            </DropdownButton>
           </Link>
 
           <Link href="/brands">
@@ -51,7 +65,7 @@ function CustomNavbar() {
 
           <Link href="/rackets">
             <a className={styles.navbar_link}>
-              Rackets
+              All Rackets
             </a>
           </Link>
 
@@ -61,7 +75,7 @@ function CustomNavbar() {
             </Link>
             : ""}
 
-            {user ?
+          {user ?
             <Link href="/credentials/account">
               <a className={styles.navbar_link}>
                 Account
