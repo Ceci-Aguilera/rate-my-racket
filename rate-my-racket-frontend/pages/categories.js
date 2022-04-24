@@ -44,9 +44,9 @@ export default function Home() {
             <main>
 
                 <div className={styles.categories_div}>
-                        <h1 className={styles.category_title}>
-                            Categories
-                        </h1>
+                    <h1 className={styles.category_title}>
+                        Categories
+                    </h1>
 
                     <div className={styles.index_categories_list_div}>
 
@@ -58,12 +58,22 @@ export default function Home() {
                                         {cat.title}
                                     </h3>
 
+                                    {/* <div className={styles.brand_rackets_select_top_button_div}>
+                                        <Button href={`/top-rackets-category/${cat.id}`} variant="primary" className={styles.brand_rackets_select_top_button}>
+                                            Select Top 3
+                                        </Button>
+                                    </div> */}
+
 
                                     <TopRackets rackets={cat.top_rackets} usePoints={true} points={cat.points} />
 
                                     <div className={styles.index_categories_element_button_div}>
                                         <Button href={`/categories/${cat.id}`} variant="primary" className={styles.index_categories_element_button}>
                                             View All
+                                        </Button>
+
+                                        <Button href={`/top-rackets-category/${cat.id}`} variant="primary" className={styles.brand_rackets_select_top_button}>
+                                            Select Top 3
                                         </Button>
                                     </div>
                                 </div>

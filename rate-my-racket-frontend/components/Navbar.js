@@ -35,25 +35,26 @@ function CustomNavbar() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className={`ms-auto navbar-nav ${styles.navbar_nav}`}>
 
-          <Link href="/categories">
-            {/* <a className={styles.navbar_link}>
-              Categories
-            </a> */}
 
-            <DropdownButton
-              variant={"primary"}
-              title={"Categories"}
-              className={styles.navbar_link}
-            >
-              <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-              <Dropdown.Item eventKey="3" active>
-                Active Item
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-            </DropdownButton>
+        <Link href="/">
+        <a className={styles.navbar_link}>
+              Home
+            </a>
+        </Link>
+
+        <Link href="/how-to-rate">
+        <a className={styles.navbar_link}>
+              How To Rate
+            </a>
+        </Link>
+
+          <Link href="/categories">
+            <a className={styles.navbar_link}>
+              Features & Categories
+            </a>
           </Link>
+
+
 
           <Link href="/brands">
             <a className={styles.navbar_link}>
