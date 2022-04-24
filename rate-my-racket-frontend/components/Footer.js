@@ -6,8 +6,9 @@ import styles from "../styles/Footer.module.css";
 
 import { useEffect, useState } from "react";
 
-// import {useContextMenu} from "../context/MenuContext";
-import {useAuth} from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
+
+import { EmailIcon } from "../components/Icons"
 
 function Footer() {
 
@@ -23,10 +24,34 @@ function Footer() {
         <Link href="/categories"><a className={styles.footer_link}>  Features & Categories</a></Link>
         <Link href="/brands"><a className={styles.footer_link}>Brands</a></Link>
         <Link href="/rackets"><a className={styles.footer_link}>All Rackets</a></Link>
-        {user == null?<Link href="/credentials/login"><a className={styles.footer_link}>Login</a></Link>:""}
-        {user != null?<Link href="/credentials/account"><a className={styles.footer_link}>Account</a></Link>:""}
-        {user != null?<Link href="/credentials/logout"><a className={styles.footer_link}>Logout</a></Link>:""}
+        {user == null ? <Link href="/credentials/login"><a className={styles.footer_link}>Login</a></Link> : ""}
+        {user != null ? <Link href="/credentials/account"><a className={styles.footer_link}>Account</a></Link> : ""}
+        {user != null ? <Link href="/credentials/logout"><a className={styles.footer_link}>Logout</a></Link> : ""}
       </div>
+
+      <div className={styles.footer_contact_section}>
+
+        <h4 className={styles.footer_contact_title}>Contact Us</h4>
+
+        <div className={styles.footer_contact_element_div}>
+
+          <EmailIcon width={30} height={30} fill={"white"} />
+
+          <p className={styles.footer_contact_element_p}>ratemyracket@gmail.com</p>
+
+        </div>
+
+      </div>
+
+
+      <div className={styles.footer_contact_section}>
+
+        <h4 className={styles.footer_contact_title}>Developed by</h4>
+
+        <p className={styles.footer_contact_element_p}>Cecilia Fernandez Aguilera</p>
+
+      </div>
+
     </footer>
   );
 }
