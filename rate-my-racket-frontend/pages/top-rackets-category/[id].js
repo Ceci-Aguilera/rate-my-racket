@@ -9,6 +9,7 @@ import TopRacketsGrid from "../../components/TopRacketsGrid";
 import { StarIcon } from "../../components/Icons";
 
 import { useAuth } from "../../context/AuthContext"
+import Link from "next/link";
 
 const domain = process.env.NEXT_PUBLIC_BACKEND_API_URL
 
@@ -86,7 +87,7 @@ const TopRacketsCategory = ({ id }) => {
             })
 
             const result = await rateTopRackets(id, user.user.id, body)
-            if(result == "Success"){
+            if (result == "Success") {
                 router.push('/')
             }
         }
@@ -99,44 +100,54 @@ const TopRacketsCategory = ({ id }) => {
 
     return (category == null || rackets == null) ? <div></div> : (
         <div className={styles.brand_rackets_div}>
-            <div className={styles.brand_rackets_img}>
-                <h1 className={styles.brand_rackets_category_title}>{category.title} - Select Top 3 Rackets</h1>
-            </div>
 
-            <Row className={styles.top_rackets_row}>
-                <Col xs={6} sm={6} md={6} lg={6}>
-                    <div className={styles.top_rackets_div}>
-                        <p className={styles.top_rackets_p}>
-                            <span className={styles.top_rackets_p_span}>Top 1st Choice:</span>{" "}{gold_racket ? gold_racket.description : "---"}{" "}
-                            <StarIcon height={20} width={20} fill={"gold"} className={styles.top_racket_gold_star_icon} />
-                        </p>
+            {(user == null) ? <div className={styles.rate_racket_login_message}><Link href="/credentials/login"><a>Login</a></Link> before rating this racket</div> : (
 
-                        <p className={styles.top_rackets_p}>
-                            <span className={styles.top_rackets_p_span}>Top 2nd Choice:</span>{" "}{silver_racket ? silver_racket.description : "---"}{" "}
-                            <StarIcon height={20} width={20} fill={"silver"} className={styles.top_racket_gold_star_icon} />
-                        </p>
+                <div>
 
-                        <p className={styles.top_rackets_p}>
-                            <span className={styles.top_rackets_p_span}>Top 3rd Choice:</span>{" "}{bronze_racket ? bronze_racket.description : "---"}{" "}
-                            <StarIcon height={20} width={20} fill={"#cd7f32"} className={styles.top_racket_gold_star_icon} />
-                        </p>
+                    <div className={styles.brand_rackets_img}>
+                        <h1 className={styles.brand_rackets_category_title}>{category.title} - Select Top 3 Rackets</h1>
                     </div>
-                </Col>
 
-                <Col xs={6} sm={6} md={6} lg={6}>
-                    <div className={styles.brand_rackets_select_top_button_div}>
-                        <Button variant="primary" className={styles.brand_rackets_select_top_button} onClick={(e) => onSaveChanges(e)}>
-                            Save Changes
-                        </Button>
-                    </div>
-                </Col>
-            </Row>
+                    <Row className={styles.top_rackets_row}>
+                        <Col xs={6} sm={6} md={6} lg={6}>
+                            <div className={styles.top_rackets_div}>
+                                <p className={styles.top_rackets_p}>
+                                    <span className={styles.top_rackets_p_span}>Top 1st Choice:</span>{" "}{gold_racket ? gold_racket.description : "---"}{" "}
+                                    <StarIcon height={20} width={20} fill={"gold"} className={styles.top_racket_gold_star_icon} />
+                                </p>
 
-            <TopRacketsGrid rackets={rackets}
-                onChangeGoldRacket={onChangeGoldRacket}
-                onChangeSilverRacket={onChangeSilverRacket}
-                onChangeBronzeRacket={onChangeBronzeRacket}
-            />
+                                <p className={styles.top_rackets_p}>
+                                    <span className={styles.top_rackets_p_span}>Top 2nd Choice:</span>{" "}{silver_racket ? silver_racket.description : "---"}{" "}
+                                    <StarIcon height={20} width={20} fill={"silver"} className={styles.top_racket_gold_star_icon} />
+                                </p>
+
+                                <p className={styles.top_rackets_p}>
+                                    <span className={styles.top_rackets_p_span}>Top 3rd Choice:</span>{" "}{bronze_racket ? bronze_racket.description : "---"}{" "}
+                                    <StarIcon height={20} width={20} fill={"#cd7f32"} className={styles.top_racket_gold_star_icon} />
+                                </p>
+                            </div>
+                        </Col>
+
+                        <Col xs={6} sm={6} md={6} lg={6}>
+                            <div className={styles.brand_rackets_select_top_button_div}>
+                                <Button variant="primary" className={styles.brand_rackets_select_top_button} onClick={(e) => onSaveChanges(e)}>
+                                    Save Changes
+                                </Button>
+                            </div>
+                        </Col>
+                    </Row>
+
+                    <TopRacketsGrid rackets={rackets}
+                        onChangeGoldRacket={onChangeGoldRacket}
+                        onChangeSilverRacket={onChangeSilverRacket}
+                        onChangeBronzeRacket={onChangeBronzeRacket}
+                    />
+
+
+
+                </div>
+            )}
         </div>
     );
 };

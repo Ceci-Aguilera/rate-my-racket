@@ -62,11 +62,11 @@ const RacketDetails = ({ id }) => {
             setRacket(temp_racket.racket)
         }
 
-        if (id != null && user != null) {
+        if (id != null) {
             FetchRacket()
         }
 
-    }, [id, user])
+    }, [id])
 
 
 
@@ -78,21 +78,25 @@ const RacketDetails = ({ id }) => {
 
 
     const onCreateVoting = async (e, comment_id, vote_type) => {
+
         e.preventDefault();
-        const body = JSON.stringify({
-            vote_type,
-        })
-        const result = await createVoting(comment_id, user.user.id, body)
+        if (user != null) {
 
-        async function FetchRacket() {
-            const temp_racket = await getRacket(id)
-            setRacket(temp_racket.racket)
+            const body = JSON.stringify({
+                vote_type,
+            })
+            const result = await createVoting(comment_id, user.user.id, body)
+
+            async function FetchRacket() {
+                const temp_racket = await getRacket(id)
+                setRacket(temp_racket.racket)
+            }
+
+            if (id != null && user != null) {
+                FetchRacket()
+            }
+
         }
-
-        if (id != null && user != null) {
-            FetchRacket()
-        }
-
     }
 
     return (racket == null) ? <div></div> : (
@@ -116,7 +120,7 @@ const RacketDetails = ({ id }) => {
 
                                 <Row className={styles.racket_details_card_rate_row}>
 
-                                    <h2>Properties</h2>
+                                    <h2 className={styles.racket_details_card_rate_title}>Properties</h2>
 
                                     {racket_props.map((racket_prop, index) => {
                                         return (
@@ -145,7 +149,7 @@ const RacketDetails = ({ id }) => {
 
                                 <Row className={styles.racket_details_card_rate_row}>
 
-                                    <h2>Racket Rating</h2>
+                                    <h2 className={styles.racket_details_card_rate_title}>Racket Rating</h2>
 
                                     {racket.ratings.map((rating, index) => {
                                         return (rating.category.title == "Beginner" || rating.category.title == "Intermediate" || rating.category.title == "Advance") ? <div></div> : (
@@ -177,6 +181,23 @@ const RacketDetails = ({ id }) => {
 
                                 <Row className={styles.racket_details_card_rate_row}>
 
+                                    <h2 className={styles.racket_details_card_rate_title}>Racket Points</h2>
+
+                                    {racket.ratings.map((rating, index) => {
+                                        return (rating.category.title == "Beginner" || rating.category.title == "Intermediate" || rating.category.title == "Advance") ? <div></div> : (
+                                            <Col key={index} xs={12} sm={12} md={12} lg={4} className={styles.racket_details_card_rate_col}>
+                                                <div className={styles.racket_details_card_rate_div}>
+                                                    <p className={styles.racket_details_card_rate_p}>
+                                                        <span className={styles.racket_details_card_rate_p_span}>{rating.category.title}:</span> {parseFloat(rating.points).toFixed(2)}
+                                                    </p>
+                                                </div>
+                                            </Col>
+                                        );
+                                    })}
+                                </Row>
+
+                                <Row className={styles.racket_details_card_rate_row}>
+
 
                                     <Col xs={12} sm={12} md={12} lg={4} className={styles.racket_details_card_rate_col}>
                                         <div className={styles.racket_details_card_rate_div}>
@@ -190,8 +211,7 @@ const RacketDetails = ({ id }) => {
                                     <Col xs={12} sm={12} md={12} lg={4} className={styles.racket_details_card_rate_col}>
                                         <div className={styles.racket_details_card_rate_div}>
                                             <p className={styles.racket_details_card_rate_p}>
-                                                <span className={styles.racket_details_card_rate_p_span}>Votes:</span> {racket.amount_of_votes}
-                                                <UserIcon className={styles.racket_details_card_rate_p_star} height={25} width={25} fill={"#38b6ff"} />
+                                                <span className={styles.racket_details_card_rate_p_span}>Points:</span> {racket.points}
                                             </p>
                                         </div>
                                     </Col>
@@ -199,7 +219,8 @@ const RacketDetails = ({ id }) => {
                                     <Col xs={12} sm={12} md={12} lg={4} className={styles.racket_details_card_rate_col}>
                                         <div className={styles.racket_details_card_rate_div}>
                                             <p className={styles.racket_details_card_rate_p}>
-                                                <span className={styles.racket_details_card_rate_p_span}>Points:</span> {racket.points}
+                                                <span className={styles.racket_details_card_rate_p_span}>Votes:</span> {racket.amount_of_votes}
+                                                <UserIcon className={styles.racket_details_card_rate_p_star} height={25} width={25} fill={"#38b6ff"} />
                                             </p>
                                         </div>
                                     </Col>
@@ -218,13 +239,13 @@ const RacketDetails = ({ id }) => {
             </Row>
 
             <div className={styles.racket_details_all_comments_div}>
-            <h2 className={styles.racket_details_all_comments_title}>
-                Comments
-            </h2>
+                <h2 className={styles.racket_details_all_comments_title}>
+                    Comments
+                </h2>
                 {racket.comments.map((comment, index) => {
                     return (
                         <div key={index} className={styles.racket_details_comments_div}>
-                            {comment.comments?<Card className={styles.racket_details_comments_card}>
+                            {comment.comments ? <Card className={styles.racket_details_comments_card}>
                                 <Card.Header className={styles.racket_details_card_header}>
                                     <div className={styles.simple_comments_card_header_avatar}>
                                         {SelectedIcon(comment.userprofile.profile_icon, comment.userprofile.profile_icon_color, comment.userprofile.profile_icon_color_mode)}
@@ -233,7 +254,7 @@ const RacketDetails = ({ id }) => {
                                     </div>
                                 </Card.Header>
                                 <Card.Body className={styles.racket_details_comments_card_body}>
-                                {comment.comments}
+                                    {comment.comments}
                                 </Card.Body>
 
                                 <Card.Footer className={styles.simple_comments_card_footer}>
@@ -255,7 +276,7 @@ const RacketDetails = ({ id }) => {
                                         </div>
                                     </div>
                                 </Card.Footer>
-                            </Card>:<div></div>}
+                            </Card> : <div></div>}
                         </div>
                     );
                 })}

@@ -64,3 +64,9 @@
     margin-left: auto !important;
     margin-right:auto !important;
 }
+
+.rate_racket_login_message{
+    margin-top: 50px;
+    font-size: 1.2rem;
+    text-align: center;
+  }

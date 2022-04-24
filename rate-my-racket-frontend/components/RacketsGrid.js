@@ -109,7 +109,7 @@ function RacketsGrid({ rackets, usePoints = false, points = [] }) {
                                     </Card.Body>
 
                                     <Card.Footer className={styles.racketsGrid_card_footer}>
-                                        <Button variant="outline-primary" className={styles.racketsGrid_card_footer_button_outline}>
+                                        <Button href={`/racket-details/${racket.id}`}  variant="outline-primary" className={styles.racketsGrid_card_footer_button_outline}>
                                             Details
                                         </Button>
 

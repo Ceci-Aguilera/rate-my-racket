@@ -1,156 +1,164 @@
-.racket_details_card_header_title, .racket_details_card_header{
-    text-align: center;
+.racket_details_card_header_title,
+.racket_details_card_header {
+  text-align: center;
 }
 
-.rate_racket_div, .rate_racket_row{
-    width: 100%;
+.rate_racket_div,
+.rate_racket_row {
+  width: 100%;
 }
 
-.rate_racket_img_div, .rate_racket_img{
-    width: 100%;
-    max-width:300px;
-    height:100%;
-    max-height:700px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align:center;
+.rate_racket_img_div,
+.rate_racket_img {
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  max-height: 700px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center;
 }
 
-.rate_racket_img_div{
-    margin-top: 50px;
-    overflow: hidden;
+.rate_racket_img_div {
+  margin-top: 50px;
+  overflow: hidden;
 }
 
-.rate_racket_img{
-    transition: all 0.3s ease 0s;
-    width: 100%;
+.rate_racket_img {
+  transition: all 0.3s ease 0s;
+  width: 100%;
 }
 
-.rate_racket_img:hover{
-    transform: scale(1.25);
+.rate_racket_img:hover {
+  transform: scale(1.25);
 }
 
-.racket_details_card{
-    width: 100%;
-    margin-top: 50px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+.racket_details_card {
+  width: 100%;
+  margin-top: 50px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-.racket_details_card_header{
-    background-color: white;
-    text-align: center;
+.racket_details_card_header {
+  background-color: white;
+  text-align: center;
 }
 
-.racket_details_card_rate_p{
-    font-size: 1.2rem !important;
-    line-height: 30px !important;
+.racket_details_card_rate_p {
+  font-size: 1.2rem !important;
+  line-height: 30px !important;
 }
 
-.racket_details_card_rate_p_span{
-    font-weight: bold;
+.racket_details_card_rate_p_span {
+  font-weight: bold;
 }
 
-.racket_details_card_rate_p_star{
-    margin-left: 10px;
+.racket_details_card_rate_p_star {
+  margin-left: 10px;
 }
 
-.racket_details_card_rate_row{
-    margin-top: 25px;
+.racket_details_card_rate_row {
+  margin-top: 25px;
 }
 
-.racket_details_card_footer_button_div{
-    width: 100%;
-    margin-top: 25px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
+.racket_details_card_footer_button_div {
+  width: 100%;
+  margin-top: 25px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
 }
 
-.racket_details_card_footer_button{
-    width: 200px;
-    background-color: #38b6ff;
-    border-color: #38b6ff;
-    font-size: 1.2rem;
-    font-weight: bold;
+.racket_details_card_footer_button {
+  width: 200px;
+  background-color: #38b6ff;
+  border-color: #38b6ff;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.account_icon_div{
-    width: 50px;
-    height: 50px;
-    margin-left: 0px;
-    border-radius: 50px;
-    text-align: center;
-    line-height: 50px;
+.account_icon_div {
+  width: 50px;
+  height: 50px;
+  margin-left: 0px;
+  border-radius: 50px;
+  text-align: center;
+  line-height: 50px;
 }
 
-.account_selected_icon{
-    margin-top: -10px;
-    text-align: center;
-    line-height: 50px;
+.account_selected_icon {
+  margin-top: -10px;
+  text-align: center;
+  line-height: 50px;
 }
 
-.simple_comments_button{
-    background-color: transparent !important;
-    border-color: transparent !important;
-    padding: 0;
+.simple_comments_button {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  padding: 0;
 }
 
-.racket_details_card_header{
-    background-color:#38b6ff;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    line-height: 50px;
+.racket_details_card_header {
+  background-color: #38b6ff;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  line-height: 50px;
 }
 
-.simple_comments_card_header_title{
-    margin-left: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
+.simple_comments_card_header_title {
+  margin-left: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.racket_details_comments_div{
-    width: 100%;
-    margin-left: auto !important;
-    margin-right: auto !important;
+.racket_details_comments_div {
+  width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-.racket_details_comments_card{
-    width: 90%;
-    max-width: 1200px;
-    margin-top: 50px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+.racket_details_comments_card {
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 50px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-
-.simple_comments_card_footer{
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    font-weight: bold;
+.simple_comments_card_footer {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: bold;
 }
 
-
-.simple_comments_up_votes, .simple_comments_down_votes{
-    display: flex;
-    flex-direction: row;
-    line-height: 25px;
+.simple_comments_up_votes,
+.simple_comments_down_votes {
+  display: flex;
+  flex-direction: row;
+  line-height: 25px;
 }
 
-.simple_comments_card_footer_votes_div{
-    padding-left: 10px;
+.simple_comments_card_footer_votes_div {
+  padding-left: 10px;
 }
 
-.simple_comments_button{
-    background-color: transparent !important;
-    border-color: transparent !important;
-    padding: 0;
+.simple_comments_button {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  padding: 0;
 }
 
-.racket_details_all_comments_title{
-    margin-top: 50px;
-    text-align: center;
+.racket_details_all_comments_title {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.racket_details_card_rate_title {
+  color: #38b6ff;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }

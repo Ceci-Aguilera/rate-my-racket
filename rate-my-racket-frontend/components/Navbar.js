@@ -42,9 +42,9 @@ function CustomNavbar() {
             </a>
         </Link>
 
-        <Link href="/how-to-rate">
+        <Link href="/faqs">
         <a className={styles.navbar_link}>
-              How To Rate
+            FAQs
             </a>
         </Link>
 
@@ -85,7 +85,7 @@ function CustomNavbar() {
             : ""}
 
           {user ?
-            <Link href="/">
+            <Link href="/credentials/logout">
               <a className={styles.navbar_link}>
                 Logout
               </a>

@@ -83,7 +83,7 @@ const RateRacket = ({ id }) => {
         }
     }
 
-    return (racket == null || user == null) ? <div><Link href="/credentials/login"><a>Login</a></Link> before rating this racket</div> : (
+    return (racket == null || user == null) ? <div className={styles.rate_racket_login_message}><Link href="/credentials/login"><a>Login</a></Link> before rating this racket</div> : (
         <div className={styles.rate_racket_div}>
 
             {showAlert?<Alert variant="info" className={styles.alert} onClose={() => setShowAlert(false)} dismissible>

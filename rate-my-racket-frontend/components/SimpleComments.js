@@ -21,7 +21,7 @@ function SimpleComments() {
     const [comments, setComments] = useState(null);
 
     useEffect(() => {
-        async function FetchComments(){
+        async function FetchComments() {
             const temp_comments = await getComments();
             setComments(temp_comments.comments);
         }
@@ -29,18 +29,21 @@ function SimpleComments() {
         FetchComments();
     }, [])
 
-    const onCreateVoting = async(e, comment_id, vote_type) => {
+    const onCreateVoting = async (e, comment_id, vote_type) => {
         e.preventDefault();
-        const body = JSON.stringify({
-            vote_type,
-        })
-        const result = await createVoting(comment_id, user.user.id, body)
-        const temp_comments = await getComments();
+
+        if (user != null) {
+
+            const body = JSON.stringify({
+                vote_type,
+            })
+            const result = await createVoting(comment_id, user.user.id, body)
+            const temp_comments = await getComments();
             setComments(temp_comments.comments);
-        
+        }
     }
 
-    return (comments == null)?<div></div>:(
+    return (comments == null) ? <div></div> : (
         <div className={styles.simple_comments_div}>
 
             <h2 className={styles.simple_comments_title}>Latest Rates</h2>
@@ -50,29 +53,30 @@ function SimpleComments() {
                     <Card key={index} className={styles.simple_comments_card}>
                         <Card.Header className={styles.simple_comments_card_header}>
                             <div className={styles.simple_comments_card_header_avatar}>
-                                {SelectedIcon(comment.userprofile.profile_icon, comment.userprofile.profile_icon_color,comment.userprofile.profile_icon_color_mode)}
+                                {SelectedIcon(comment.userprofile.profile_icon, comment.userprofile.profile_icon_color, comment.userprofile.profile_icon_color_mode)}
                             </div>
                             <div className={styles.simple_comments_card_header_title}>{comment.userprofile.username} - <span className={styles.simple_comments_card_header_span}>
                                 {comment.racket.title}</span>
                             </div>
                         </Card.Header>
                         <Card.Body className={styles.simple_comments_card_body}>
-                            {comment.comments?TruncateText(comment.comments):"Rated this Racket"}
+                            {comment.comments ? TruncateText(comment.comments) : "Rated this Racket"}
                         </Card.Body>
+
                         <Card.Footer className={styles.simple_comments_card_footer}>
                             <div className={styles.simple_comments_up_votes}>
-                            <Button className={styles.simple_comments_button} onClick={(e) => onCreateVoting(e, comment.id, "UP_VOTE")}>
-                                <ThumbsUpRegular height={"25"} fill={"#38b6ff"} />
-                            </Button>
+                                <Button className={styles.simple_comments_button} onClick={(e) => onCreateVoting(e, comment.id, "UP_VOTE")}>
+                                    <ThumbsUpRegular height={"25"} fill={"#38b6ff"} />
+                                </Button>
                                 <div className={styles.simple_comments_card_footer_votes_div}>
                                     {comment.amounts_of_up_votes}
                                 </div>
                             </div>
 
                             <div className={styles.simple_comments_down_votes}>
-                            <Button className={styles.simple_comments_button} onClick={(e) => onCreateVoting(e, comment.id, "DOWN_VOTE")}>
-                                <ThumbsDownRegular height={"25"} fill={"#aaaaaa"} />
-                            </Button>
+                                <Button className={styles.simple_comments_button} onClick={(e) => onCreateVoting(e, comment.id, "DOWN_VOTE")}>
+                                    <ThumbsDownRegular height={"25"} fill={"#aaaaaa"} />
+                                </Button>
                                 <div className={styles.simple_comments_card_footer_votes_div}>
                                     {comment.amounts_of_down_votes}
                                 </div>
@@ -90,13 +94,13 @@ function SimpleComments() {
 
 
 const TruncateText = (text) => {
-    if(text.length > 200){
+    if (text.length > 200) {
         return (text.substring(0, 200) + " ...")
     }
 }
 
 
-const getComments = async() => {
+const getComments = async () => {
     const config = {
         headers: {
             "Content-Type": "application/json",
@@ -119,7 +123,7 @@ const getComments = async() => {
     })
 }
 
-const createVoting = async(comment_id, user_id, body) => {
+const createVoting = async (comment_id, user_id, body) => {
     const config = {
         headers: {
             "Content-Type": "application/json",
@@ -173,7 +177,7 @@ const SelectedIcon = (icon_name, icon_color, profile_icon_color_mode) => {
 
         return (
             <div className={styles.account_icon_div} style={{ backgroundColor: background_color, border: " 2px solid " + icon_color }} >
-                <TennisCourtIcon className={`${styles.account_icon} ${styles.account_selected_icon}`} height={20} weight={20}  fill={final_icon_color} />
+                <TennisCourtIcon className={`${styles.account_icon} ${styles.account_selected_icon}`} height={20} weight={20} fill={final_icon_color} />
             </div>
         );
 
