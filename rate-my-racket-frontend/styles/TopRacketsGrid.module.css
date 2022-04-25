@@ -165,3 +165,26 @@
     font-size: 1.2rem;
   }
   
+  @media screen and (max-width:578px){
+    .racketsGrid_div,
+    .racketsGrid_row {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .racketsGrid_card_element_s_img {
+      background-color: white;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 300px;
+      max-width: 250px;
+      margin-top: 50px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      text-align: center;
+      transition: opacity 0.5s !important;
+    }
+    
+  }

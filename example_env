@@ -1,0 +1,9 @@
+COMPOSE_PROJECT_NAME=ceci_aguilera_rate_my_racket_project
+
+
+POSTGRES_USER=racket_docker_user
+POSTGRES_PASSWORD=SuperRacketPassword5432!!!
+POSTGRES_DB=racket_docker_db
+
+# If you already have the port 3306 in use, you can change it (for example if you have MySQL)
+HOST_MACHINE_MYSQL_PORT=5432

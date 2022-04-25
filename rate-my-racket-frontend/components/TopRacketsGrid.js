@@ -72,9 +72,9 @@ function TopRacketsGrid({ rackets, onChangeGoldRacket, onChangeSilverRacket, onC
 
                 {racketsToDisplay.map((racket, index) => {
                     return (
-                        <Col key={index} xs={3} sm={3} md={3} lg={3} className={styles.racketsGrid_col}>
-                            {racket == undefined ? <div></div> :
-                                <Card className={styles.racketsGrid_card}>
+                        <Col key={index} xs={12} sm={12} md={12} lg={3} className={styles.racketsGrid_col}>
+                            {racket == undefined ? <div></div>:
+                             <Card className={styles.racketsGrid_card}>
 
                                     <Card.Body className={styles.racketsGrid_card_body}>
 
@@ -113,7 +113,7 @@ function TopRacketsGrid({ rackets, onChangeGoldRacket, onChangeSilverRacket, onC
                                             </Dropdown.Menu>
                                         </Dropdown>
                                     </Card.Footer>
-                                </Card>
+                                </Card> 
 
                             }
                         </Col>

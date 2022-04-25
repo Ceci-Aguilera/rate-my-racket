@@ -63,7 +63,7 @@ function SimpleComments() {
                             {comment.comments ? TruncateText(comment.comments) : "Rated this Racket"}
                         </Card.Body>
 
-                        <Card.Footer className={styles.simple_comments_card_footer}>
+                        {comment.comments ? <Card.Footer className={styles.simple_comments_card_footer}>
                             <div className={styles.simple_comments_up_votes}>
                                 <Button className={styles.simple_comments_button} onClick={(e) => onCreateVoting(e, comment.id, "UP_VOTE")}>
                                     <ThumbsUpRegular height={"25"} fill={"#38b6ff"} />
@@ -81,7 +81,7 @@ function SimpleComments() {
                                     {comment.amounts_of_down_votes}
                                 </div>
                             </div>
-                        </Card.Footer>
+                        </Card.Footer> : <div></div>}
                     </Card>
                 )
             })}
@@ -96,6 +96,9 @@ function SimpleComments() {
 const TruncateText = (text) => {
     if (text.length > 200) {
         return (text.substring(0, 200) + " ...")
+    }
+    else {
+        return text
     }
 }
 

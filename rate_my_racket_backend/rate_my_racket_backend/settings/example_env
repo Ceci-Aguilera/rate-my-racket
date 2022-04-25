@@ -1,8 +1,8 @@
-SECRET_KEY='django-insecure-r3da4x+v##+r=#673scc-xz5pol=6!dx$63fzb&b1owv4mzo&m'
+SECRET_KEY='secret'
 
-DB_NAME='rate_my_racket_db'
-DB_USER='rate_my_racket_user'
-DB_PASSWORD='rate_my_racket_pass'
+DB_NAME='racket_django_db'
+DB_USER='racket_django_user'
+DB_PASSWORD='SuperRacketPassword5432!!!'
 DB_HOST='localhost'
 DB_PORT=5432
 

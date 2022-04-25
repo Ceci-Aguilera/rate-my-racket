@@ -1,0 +1,56 @@
+version: "3.7"
+
+services:
+  backend:
+    build:
+      context: ./rate_my_racket_backend
+      dockerfile: Dockerfile
+    volumes:
+      - django_static_volume:/usr/src/app/static
+      - django_media_volume:/usr/src/app/media
+    hostname: backend
+    expose:
+      - 8000
+    command: ./entrypoint.sh
+    links:
+      - database
+    env_file:
+      - ./rate_my_racket_backend/rate_my_racket_backend/settings/.env
+
+  database:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    restart: 'always'
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+
+  rate_my_racket_frontend:
+    build:
+      context: ./rate-my-racket-frontend
+      dockerfile: Dockerfile
+    container_name: rate-my-racket-frontend-nextjs
+    ports:
+      - 3000:3000
+    env_file: ./rate-my-racket-frontend/.env.local
+
+  nginx:
+    restart: always
+    build: ./rate_my_racket_backend/nginx
+    volumes:
+      - django_static_volume:/usr/src/app/static
+      - django_media_volume:/usr/src/app/media
+    ports:
+      - 80:80
+    links:
+      - backend
+
+
+volumes:
+  postgres_data:
+  django_static_volume:
+  django_media_volume:
